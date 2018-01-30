@@ -1,0 +1,208 @@
+@mixin setBodyBackground($color){
+    background-color: $color;
+}
+
+@mixin setContent($backgroundColor, $contentColor){
+    background-color: $backgroundColor;
+    color:$contentColor;
+}
+
+@mixin setHeadingColor($color){
+    h1, h2{
+        color: $color;}
+}
+
+@mixin setFirstHeadingUppercase($uppercaseHeading){
+    text-transform:$uppercaseHeading;  
+}
+
+@mixin setImgBorderColor($color){
+    border: 2px solid $color;
+}
+
+@mixin setImgRightMargins($imgRightMargin){
+    margin: $imgRightMargin 0 0 20px;
+}
+
+@mixin setBriefBlock($color, $briefWidth, $briefMargins){
+    width: $briefWidth;
+    background-color: $color;
+    margin: $briefMargins;
+}
+
+@mixin setLinkColor($color){
+    color:$color;
+    
+    &:hover{
+        color:lighten($color, 30%);
+    }
+}
+
+@mixin setTableColors($tdBackgroundColor, $thBackgroundColor, $tdBottomColor){
+    th{
+        background-color: $tdBackgroundColor;}
+    
+    td{
+        background-color: $thBackgroundColor;
+        border-bottom: 1px solid $tdBottomColor;}
+}
+
+@mixin setFormColors($labelColor, $buttonColor, $buttonBackground, $inputBorder){
+    label{
+        color: $labelColor;}
+    
+    input, textarea{
+        border:1px solid $inputBorder;}
+    
+    button{
+        color: $buttonColor;
+        background-color: $buttonBackground;
+        border: 1px solid $buttonColor;
+        
+        &:hover{
+            background-color: darken($buttonColor, 10%);
+            color: lighten($buttonColor,50%);}
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{    
+    @include setBodyBackground($bodyBackground);
+    @include setHeadingColor($headingColor);
+}
+
+#content{
+    @include setContent($contentBackground, $contentColor);
+    max-width: 960px;
+    margin: 1px auto 0;
+    padding: 0 20px;
+}
+    
+h1{
+    @include setFirstHeadingUppercase($uppercaseHeading);
+    text-align: center;
+    padding: 20px 0 10px;
+}
+    
+h2{    
+    padding: 11px 0;
+}
+    
+p{
+    padding: 10px 0 5px 0;
+    
+    &+a{
+        display: inline-block;
+        padding-top: 10px;}
+    }
+    
+a{
+    @include setLinkColor($linkColor);
+    &+h1{
+        padding-top: 0;
+    }
+}
+    
+.brief{
+    @include setBriefBlock($briefBackgroundColor, $briefWidth, $briefMargins);
+    float: left;
+    padding: 2%;
+    color: #000;
+}
+    
+img{
+    @include setImgBorderColor($headingColor);
+    padding: 2px;
+}
+    
+.img-left{
+    float: left;
+    max-width: 45%;
+    margin: 10px 20px 10px 0;
+        
+    &:first-child{
+        margin-top: 0;
+    }
+}
+    
+.img-right{
+    @include setImgRightMargins($imgRightMargins);
+    float: right;
+}
+        
+table{
+    @include setTableColors($thBackgroundColor, $tdBackgroundColor, $tdBottomColor);
+    width: 94%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    
+    caption{
+        text-align: right;
+        color: #000;}
+
+    th, td{
+        padding: 10px 10px 10px 20px;}
+    
+    th{
+        color: #000;
+        text-align: left;    
+        font-weight: normal;
+        text-transform: uppercase;
+
+        &:not(:last-child){
+            border-right: 1px solid #fff; }
+    }
+}
+    
+form{
+    @include setFormColors($labelColor, $buttonColor, $buttonBackground, $inputBorder);
+    padding-bottom: 20px;
+
+    .left{
+        float: left;
+        width: 50%;
+
+        input{
+             width: 98%;}
+    }
+
+    .right{
+        margin-left: 1%;
+        width: 49%;
+        float: right;
+    }
+
+    div{
+        margin: 4px 0 12px 0;}
+
+    input{
+        font-size: 0.8em;
+    }
+
+    input, label, textarea{
+        display: inline;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    input, textarea{
+        padding: 5px;
+    }
+
+    button{
+        margin-top: 5px;
+        transition: 0.6s;
+        height: 45px;
+        width: 25%;
+        font-size: 1.25em;
+
+        &:hover{
+            cursor: pointer;
+            font-size: 1.3em;}
+        }
+}
