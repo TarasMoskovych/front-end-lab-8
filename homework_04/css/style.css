@@ -1,0 +1,309 @@
+*{
+    margin: 0;
+    padding: 0;}
+
+.container{
+    width: 100%;  
+    font-family: 'Open Sans', sans-serif;}
+
+
+/* HEADER */
+header{
+    background: url(../img/apples.jpg) top center;
+    background-size: cover;
+    padding-bottom: 100px; 
+    background-attachment: fixed;}
+
+.layout{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 90px 0 90px;}
+
+.header-row{    
+    display: flex;
+    justify-content: space-between;  }
+
+header h2{
+    letter-spacing: 3px;}
+
+header h1, header h2, header a, header p{
+    color: #fff;}
+
+header nav{
+    margin-right: 25px;}
+
+header h2, header a{
+    font-weight: normal;
+    font-size: 0.9em;}
+
+header a{
+    margin: 0 28px;
+    text-decoration: none;
+    padding: 10px 5px;}
+
+header a:hover{
+    border-bottom: 2px solid #A3B0BC;}
+
+header h1{
+    margin-top: 170px;
+    text-align: center;
+    font-size: 3em;
+    font-weight: normal;
+    letter-spacing: 10px;}
+
+header h1 span{
+    font-size: 2em;}
+
+header h1:after{
+    content: "TM";
+    letter-spacing: normal;
+    font-size: 0.3em;
+    vertical-align: super;
+    position: relative;
+    top:-8px;}
+
+header p{
+    text-align: center;
+    font-weight: normal;
+    font-size: 0.9em;
+    padding-bottom: 180px;}
+
+header .button{
+    transition: 1s;
+    display: block;
+    width: 15%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px 25px;
+    background-color: rgba(0,0,0,0.5);
+    border: 2px solid #fff;
+    color:#fff;
+    font-size: 0.9em;}
+
+header .button:hover, button:hover{
+    background-color: rgba(200,200,200,0.5);
+    color:#000;
+    cursor: pointer;}
+
+
+/* MAIN */
+/* top */
+main .top .header-row{
+    justify-content: space-around;}
+
+main .top{
+    padding: 80px 0;}
+
+main .top p{
+    width: 50%;}
+
+main .top p:first-child{
+    padding-right: 20px;
+    font-size: 1.5em;}
+
+main .top p:last-child{
+    font-size: 0.8em;}
+
+.bold{
+    font-weight: bold;}
+
+/* middle */
+main .middle{
+    background-color: #F3F3F3;
+    padding-bottom: 180px;}
+
+main .middle .layout>p{
+    text-align: center;
+    font-size: 1.55em;
+    margin: 80px 0;}
+
+main .layout .grid div{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 2em;}
+
+main .layout>.grid div:last-child{
+    padding-top: 2em;
+    grid-template-columns: 1fr 2fr;}
+
+main .layout .grid div img{
+    height: 300px;
+    width: 100%;
+    border: 1px solid #fff;}
+
+.newsletter{
+    padding: 85px 0 60px 0;
+    margin-top: 80px;
+    background-color: #fff;}
+
+.middle figure{
+    position: relative;}
+
+.middle figure div{
+    width: 70px;
+    background-color: #625F60;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: 2px solid #fff;}
+
+.middle figure div span{
+    color:#fff;
+    font-size: 0.9em;   
+    padding: 8px 8px 8px 12px;}
+
+.middle figure p{
+    position: absolute;
+    margin-top: -55px;
+    margin-left: 20px;
+    left: 10px;
+    color: #fff;
+    width: 100%;
+    text-shadow: 2px 2px 5px black;}
+
+.newsletter .grid{
+    display: grid;
+    grid-template-columns: 40% 59%;}
+
+.newsletter .grid div{
+    grid-template-columns: 90% 20%;
+    position: relative;
+    top:-10px;}
+
+main .layout .newsletter p{
+    margin-left: 20%;
+    font-size: 1.5em;}
+
+main .layout .newsletter input{
+    margin-left: 5px;
+    background-color: #F3F3F3; 
+    height: 58px;
+    font-size: 0.9em;
+    padding: 0 25px;
+    border: 1px solid #4E5051;
+    font-weight: bold;
+    color: #757588;}
+
+main .layout .newsletter button{
+    transition: 1s;
+    width: 80%;
+    position: relative;
+    left: -40px;
+    background-color: #343638;
+    border: 1px solid #4E5051;
+    color:#fff;
+    font-weight: bold;
+    border: none;}
+
+main .newsletter button:hover{
+    background-color: #BBBBBB;
+    color: #fff;}
+
+/*bottom*/
+.bottom h3 .header-row{
+    justify-content: space-around;}
+
+.bottom h3{
+    margin-bottom: 20px;}
+
+.bottom p, .bottom a{
+    display: block;
+    color: #9E9E9E;
+    font-size: 0.9em;
+    padding-bottom: 10px;}
+
+.bottom{
+    padding-bottom: 140px;}
+
+.bottom a{
+    text-decoration: none;}
+
+.bottom .header-row div{
+    margin: 0;
+    padding: 0;
+    width: 190px;}
+
+.bottom .header-row div:last-child{
+    padding-right: 10px;
+    width: 240px;}
+
+.bottom .header-row div:last-child p{
+    padding-bottom: 20px;}
+
+.bottom .grid form div{
+    display: grid;
+    grid-template-columns: 60% 35%;}
+
+.bottom p{
+    color: #A4A4A4;
+    font-weight: normal;
+    line-height: 1.8em;
+    font-size: 0.85em;}
+
+.bottom input{
+    background-color: #F3F3F3; 
+    height: 25px;
+    font-size: 0.9em;
+    padding: 10px 10px 10px 15px;
+    border: 1px solid #343638;
+    color: #757588;
+    font-style: italic;}
+
+.bottom button{
+    transition: 1s;
+    position: relative;
+    left: -35px;
+    background-color: #343638;
+    border: 1px solid #4E5051;
+    color:#fff;}
+
+.bottom .tweet p:nth-child(2){
+    font-style: italic;
+    line-height: 1.4em;}
+
+.bottom .tweet p:nth-child(3){
+    color: #DBDBDB;
+    margin-top: 10px;}
+
+.bottom .bigger{
+    font-size: 0.9em;}
+
+.bottom a:hover{
+    text-decoration: underline;}
+
+.bottom button:hover{
+    background-color: #BBBBBB;
+    color: #fff;
+    border: none;}
+
+
+/*FOOTER*/
+footer{
+    padding-bottom: 20px;}
+
+footer hr{
+    border: none;     
+    background-color: #F0F0F0; 
+    height: 2px;}
+
+footer .header-row{
+    margin-top: 30px;}
+
+footer p{
+    color: #9E9E9E;}
+
+footer a{
+    padding: 0 0 5px 5px;
+    color: #000;
+    font-weight:bold;}
+
+footer p, footer a{
+    font-weight: normal;
+    font-size: 0.9em;}
+
+footer a{
+    margin-left: 40px;
+    text-decoration: none;}
+
+footer a:hover{
+    border-bottom: 2px solid #A3B0BC;}
