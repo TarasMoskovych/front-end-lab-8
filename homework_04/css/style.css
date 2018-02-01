@@ -18,6 +18,9 @@
 .flex-row{    
     display: flex;}
 
+.grid{
+    display: grid;}
+
 .align-center{
     text-align: center;}
 
@@ -28,8 +31,6 @@
     font-weight: bold;}
 
 .button{
-    display: block;
-    margin: 0 auto;
     background-color: rgba(0,0,0,0.5);
     font-size: 0.9em;
     transition: 1s;}
@@ -87,6 +88,8 @@ header .layout>p{
     padding-bottom: 160px;}
 
 header .button{
+    display: block;
+    margin: 0 auto;
     width: 180px;
     padding: 18px 22px;
     border: 2px solid #fff;
@@ -102,14 +105,14 @@ header .button:hover{
     justify-content: space-between;}
 
 .top{
-    padding: 80px 0;}
+    padding: 80px 0 120px 0;}
 
 .top p, .top .flex-row div{
     width: 95%;}
 
 
 .top .flex-row div p{
-    font-size: 1.3em;
+    font-size: 1.5em;
     text-align: left;}
 
 .top .flex-row div p:first-child{
@@ -121,96 +124,187 @@ header .button:hover{
 
 
 /** middle **/
-main .middle{
+.middle{
     background-color: #F3F3F3;
     padding-bottom: 180px;}
 
-main .middle .layout>p{
-    text-align: center;
+.middle .layout>p{
     font-size: 1.55em;
     margin: 80px 0;}
 
-main .layout .grid div{
-    display: grid;
+/** background-images **/
+
+.middle .grid-top{
     grid-template-columns: 2fr 1fr;
+    grid-column-gap: 2em;
+    padding-bottom: 2em;}
+
+.middle .grid-bottom {
+    grid-template-columns: 1fr 2fr;
     grid-column-gap: 2em;}
 
-main .layout>.grid div:last-child{
-    padding-top: 2em;
+.middle .box{
+    height: 300px;
+    border: 1px solid #fff;
+    background-size: cover !important;
+    position: relative;}
+
+.middle .img1{
+    background: url(../img/sample.jpg) no-repeat center;}
+
+.middle .img2{
+    background: url(../img/sample2.jpg) no-repeat center;}
+
+.middle .img3{
+    background: url(../img/sample2.jpg) no-repeat center;}
+
+.middle .img4{
+    background: url(../img/sample3.jpg) no-repeat center;}
+
+.middle .box p{
+    font-size: 1em;
+    position: absolute;
+    text-shadow: 2px 2px 5px black;
+    bottom: 25px;
+    left: 30px;
+    z-index: 1;}
+
+.middle .box .likes{
+    position: absolute;
+    padding: 8px 13px;
+    background-color: #625F60;
+    right: 20px;
+    top: 20px;
+    border: 2px solid #fff;
+    z-index: 1;
+    transition: 1s;}
+
+.middle .box .likes span{
+    font-size: 0.9em;
+    transition: 1s;}
+
+.middle .hovering{
+    width: 100%;
+    position: relative;
+    height: 300px;
+    left: 0;
+    background: rgba(0,0,0,0.4);
+    transition: 1s;
+    opacity: 0;}
+
+.middle .box:hover .hovering{
+    opacity: 1;}
+
+.middle .box:hover .likes{
+    border: 2px solid #555;
+    background-color: #fff;
+    color:#000;}
+
+.middle .box:hover .likes span{
+    color:#000;} 
+
+
+
+/** src images **/
+/*
+.middle .grid-top{
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 2em;
+    padding-bottom: 2em;}
+
+.middle .grid-bottom{
+    grid-column-gap: 2em;
     grid-template-columns: 1fr 2fr;}
 
-main .layout .grid div img{
+main .grid img{
     height: 300px;
     width: 100%;
     border: 1px solid #fff;}
 
-.newsletter{
-    padding: 85px 0 60px 0;
-    margin-top: 80px;
-    background-color: #fff;}
-
-.middle figure{
+.middle .box{
+    display: block;
     position: relative;}
 
-.middle figure div{
-    width: 70px;
+.middle .box .likes{
     background-color: #625F60;
     position: absolute;
     right: 20px;
     top: 20px;
-    border: 2px solid #fff;}
+    padding: 8px 12px;
+    border: 2px solid #fff;
+    z-index: 1;
+    transition: 1.5s;}
 
-.middle figure div span{
-    color:#fff;
-    font-size: 0.9em;   
-    padding: 8px 8px 8px 12px;}
+.middle .box div span{
+    font-size: 0.9em;}
 
-.middle figure p{
+.middle .box p{
+    font-size: 1em;
+    text-decoration: none;
     position: absolute;
     margin-top: -55px;
-    margin-left: 20px;
-    left: 10px;
-    color: #fff;
+    left: 30px;
+    text-shadow: 2px 2px 5px black;
+    z-index: 1;}
+
+.middle .hovering{
     width: 100%;
-    text-shadow: 2px 2px 5px black;}
+    height: 300px;
+    position: absolute;
+    padding: 0;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.4);
+    transition: 1s;
+    opacity: 0;}
 
-.newsletter .grid{
-    display: grid;
-    grid-template-columns: 40% 59%;}
+.middle .box:hover .hovering{
+    opacity: 1;}
 
-.newsletter .grid div{
-    grid-template-columns: 90% 20%;
-    position: relative;
-    top:-10px;}
+.middle .box:hover .likes{
+    border: 2px solid #555;
+    background-color: #fff;
+    color:#000;}
 
-main .layout .newsletter p{
-    margin-left: 20%;
-    font-size: 1.5em;}
+.middle .box:hover .likes span{
+    color:#000;} 
 
-main .layout .newsletter input{
+*/
+
+.middle .newsletter{
+    padding: 85px 60px 60px 60px;
+    margin-top: 80px;
+    background-color: #fff;}
+
+.middle .newsletter .outer{
+     grid-template-columns: 50% 50%;}
+
+.middle .newsletter .inner{
+    margin-top: -15px;
+    grid-template-columns: 70% 30%;}
+
+.middle .newsletter p{
+    font-size: 1.3em;}
+
+.middle .newsletter input{
     margin-left: 5px;
     background-color: #F3F3F3; 
     height: 58px;
-    font-size: 0.9em;
-    padding: 0 25px;
+    font-size: 0.8em;
+    padding: 0 20px;
     border: 1px solid #4E5051;
-    font-weight: bold;
-    color: #757588;}
+    color: #000;}
 
-main .layout .newsletter button{
+.middle .newsletter .button{
     transition: 1s;
-    width: 80%;
     position: relative;
-    left: -40px;
+    left: -2px;
     background-color: #343638;
-    border: 1px solid #4E5051;
-    color:#fff;
-    font-weight: bold;
     border: none;}
 
-main .newsletter button:hover{
+.middle .newsletter .button:hover{
     background-color: #BBBBBB;
-    color: #fff;}
+    border: 1px solid #000;}
 
 /*bottom*/
 .bottom h3 .header-row{
