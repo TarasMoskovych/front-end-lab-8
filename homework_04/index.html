@@ -5,27 +5,28 @@
       <title>Epam Front End Lab. CSS Layouts</title>
       <link rel="stylesheet" type="text/css" href="css/style.css">
       <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+      <link href="https://fonts.googleapis.com/css?family=Fanwood+Text" rel="stylesheet">
    </head>
    <body>
       <div class="container">
          <header>
             <div class="layout">
-               <div class="header-row">
-                  <h2>BLACK &amp; WHITE</h2>
+               <div class="flex-row">
+                  <p class="white">BLACK &amp; WHITE</p>
                   <nav>            
-                     <a href="#">Home</a>
-                     <a href="#">About</a>
-                     <a href="#">Shop</a>
-                     <a href="#">Vacancies</a>
+                     <a class="white" href="#">Home</a>
+                     <a class="white" href="#">About</a>
+                     <a class="white" href="#">Shop</a>
+                     <a class="white" href="#">Vacancies</a>
                   </nav>
                </div>
-               <h1> BLACK <span>&amp;</span> WHITE</h1>
-               <p>An Original Band Since 1965</p>
-               <a class="button" href="#">Read More</a>
+               <h1 class="white align-center weight-normal"> BLACK <span>&amp;</span> WHITE<span>&trade;</span></h1>
+               <p class="white align-center">An Original Brand Since 1965</p>
+               <a class="button align-center white" href="#top">Read More</a>
             </div>
          </header>
          <main>
-            <section class="top">
+            <section id="top" class="top">
                <div class="layout">
                   <div class="header-row">
                      <p>Lorem ipsum dolor, consectetur adipisicing. Aenean <span class="bold">commodo ligula</span> edet dolor.</p>
