@@ -24,6 +24,9 @@
 .weight-normal{
     font-weight: normal;}
 
+.weight-bold{
+    font-weight: bold;}
+
 .button{
     display: block;
     margin: 0 auto;
@@ -59,15 +62,15 @@ header nav{
 
 header a{   
     text-decoration: none;
-    padding: 10px 5px;
+    padding: 0 5px 10px 5px;
     margin: 0 25px;}
 
 header a:hover{
     border-bottom: 2px solid #A3B0BC;}
 
 header h1{
-    margin-top: 200px;
-    font-size: 2.6em;
+    margin-top: 180px;
+    font-size: 2.8em;
     letter-spacing: 10px;
     position: relative;
     left: 15px;}
@@ -93,28 +96,31 @@ header .button:hover{
     border: 2px solid #536937;}
 
 
-/* MAIN */
-/* top */
-main .top .header-row{
-    justify-content: space-around;}
+/** main **/
+/** top **/
+.top .flex-row{
+    justify-content: space-between;}
 
-main .top{
+.top{
     padding: 80px 0;}
 
-main .top p{
-    width: 50%;}
+.top p, .top .flex-row div{
+    width: 95%;}
 
-main .top p:first-child{
-    padding-right: 20px;
-    font-size: 1.5em;}
 
-main .top p:last-child{
-    font-size: 0.8em;}
+.top .flex-row div p{
+    font-size: 1.3em;
+    text-align: left;}
 
-.bold{
-    font-weight: bold;}
+.top .flex-row div p:first-child{
+    margin-bottom: 5px;}
 
-/* middle */
+.top p:last-child{
+    font-size: 0.9em;
+    text-align: justify;}
+
+
+/** middle **/
 main .middle{
     background-color: #F3F3F3;
     padding-bottom: 180px;}
