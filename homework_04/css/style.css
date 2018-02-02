@@ -10,7 +10,9 @@
 .layout{
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 90px 0 90px;}
+    padding: 40px 90px 0 90px;
+    padding-right: 7%;
+    padding-left: 7%;}
 
 .white{
     color: #fff;}
@@ -36,7 +38,7 @@
     transition: 1s;}
 
 .button:hover{
-    background-color: rgba(240,240,240,0.7);
+    background-color: rgba(240,240,240,0.6);
     color:#000;
     cursor: pointer;}
 
@@ -96,7 +98,7 @@ header .button{
     font-size: 0.9em;}
 
 header .button:hover{
-    border: 2px solid #536937;}
+    border: 2px solid #999;}
 
 
 /** main **/
@@ -110,12 +112,11 @@ header .button:hover{
 .top p, .top .flex-row div{
     width: 95%;}
 
-
-.top .flex-row div p{
+.top .flex-row div h2{
     font-size: 1.5em;
     text-align: left;}
 
-.top .flex-row div p:first-child{
+.top .flex-row div h2:first-child{
     margin-bottom: 5px;}
 
 .top p:last-child{
@@ -128,7 +129,7 @@ header .button:hover{
     background-color: #F3F3F3;
     padding-bottom: 180px;}
 
-.middle .layout>p{
+.middle .layout>h2{
     font-size: 1.55em;
     margin: 80px 0;}
 
@@ -304,87 +305,83 @@ main .grid img{
 
 .middle .newsletter .button:hover{
     background-color: #BBBBBB;
-    border: 1px solid #000;}
+    border: 1px solid #000;
+    border-left: none;}
 
-/*bottom*/
-.bottom h3 .header-row{
-    justify-content: space-around;}
+
+/** bottom **/
+.bottom{
+    padding: 90px 0;}
+
+.bottom .flex-row{
+    justify-content: space-between;}
+
+.bottom .flex-row div:not(:last-child){
+    padding-right: 20px;
+    max-width: 200px;}
+
+.bottom .flex-row div:last-child{
+    max-width: 260px;}
 
 .bottom h3{
     margin-bottom: 20px;}
 
-.bottom p, .bottom a{
-    display: block;
-    color: #9E9E9E;
-    font-size: 0.9em;
-    padding-bottom: 10px;}
-
-.bottom{
-    padding-bottom: 140px;}
-
 .bottom a{
+    display: block;
     text-decoration: none;}
 
-.bottom .header-row div{
-    margin: 0;
-    padding: 0;
-    width: 190px;}
+.bottom a:hover{
+    text-decoration: underline;}
 
-.bottom .header-row div:last-child{
-    padding-right: 10px;
-    width: 240px;}
-
-.bottom .header-row div:last-child p{
-    padding-bottom: 20px;}
-
-.bottom .grid form div{
-    display: grid;
-    grid-template-columns: 60% 35%;}
+.bottom p, .bottom a{
+    color: #A4A4A4;
+    font-weight: bold;
+    font-size: 0.85em;
+    padding-bottom: 8px;}
 
 .bottom p{
-    color: #A4A4A4;
-    font-weight: normal;
-    line-height: 1.8em;
-    font-size: 0.85em;}
-
-.bottom input{
-    background-color: #F3F3F3; 
-    height: 25px;
-    font-size: 0.9em;
-    padding: 10px 10px 10px 15px;
-    border: 1px solid #343638;
-    color: #757588;
-    font-style: italic;}
-
-.bottom button{
-    transition: 1s;
-    position: relative;
-    left: -35px;
-    background-color: #343638;
-    border: 1px solid #4E5051;
-    color:#fff;}
+    line-height: 1.8em;}
 
 .bottom .tweet p:nth-child(2){
     font-style: italic;
-    line-height: 1.4em;}
+    line-height: 1.6em;}
 
 .bottom .tweet p:nth-child(3){
     color: #DBDBDB;
     margin-top: 10px;}
 
 .bottom .bigger{
-    font-size: 0.9em;}
+    font-size: 0.88em;}
 
-.bottom a:hover{
-    text-decoration: underline;}
+.bottom .flex-row div:last-child p{
+    padding-bottom: 30px;}
 
-.bottom button:hover{
-    background-color: #BBBBBB;
-    color: #fff;
-    border: none;}
+.bottom .grid{
+    grid-template-columns: 60% 35%;}
+
+.bottom input{
+    background-color: #F3F3F3; 
+    height: 25px;
+    font-size: 0.8em;
+    padding: 10px 10px 10px 15px;
+    border: 1px solid #343638;
+    color: #757588;
+    font-style: italic;}
+
+.bottom .button{
+    position: relative;
+    left: -1px;
+    font-size: 0.8em;
+    border: none;
+    background-color: #343638;}
+
+.bottom .button:hover{
+    border: 1px solid #000;
+    border-left: none;
+    background-color: #BBBBBB;}
 
 
-/*FOOTER*/
+/** footer **/
 footer{
     padding-bottom: 20px;}
 
@@ -393,24 +390,22 @@ footer hr{
     background-color: #F0F0F0; 
     height: 2px;}
 
-footer .header-row{
-    margin-top: 30px;}
+footer .flex-row{
+    margin-top: 30px;
+    justify-content: space-between;}
+
+footer p, footer a{
+    font-size: 0.85em;}
 
 footer p{
     color: #9E9E9E;}
 
 footer a{
+    margin-left: 40px;
+    text-decoration: none;
     padding: 0 0 5px 5px;
     color: #000;
     font-weight:bold;}
 
-footer p, footer a{
-    font-weight: normal;
-    font-size: 0.9em;}
-
-footer a{
-    margin-left: 40px;
-    text-decoration: none;}
-
 footer a:hover{
-    border-bottom: 2px solid #A3B0BC;}
+    border-bottom: 2px solid #555;}
