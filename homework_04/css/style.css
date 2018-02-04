@@ -2,18 +2,15 @@
     margin: 0;
     padding: 0;}
 
-/** general **/
 .container{
     width: 100%;  
     font-family: 'Open Sans', sans-serif;
     font-size: 1vw;}
 
 .layout{
-    /*max-width: 1200px;*/
-    max-width: 86%;
+    max-width: 90%;
     margin: 0 auto;
-    /*padding: 40px 7% 0 7%;*/
-    padding: 3% 7% 0 7%;}
+    padding: 3% 5% 0 5%;}
 
 .white{
     color: #fff;}
@@ -46,12 +43,15 @@
 a{
     text-decoration: none;}
 
+input:focus{
+    outline: none;
+    box-shadow: inset 0 0 2px #000;}
+
 
 /** header **/
 header{
     background: url(../img/apples.jpg) center no-repeat;
     background-size: cover;
-    /*padding-bottom: 100px;*/
     padding-bottom: 7%;
     background-attachment: fixed;}
 
@@ -60,33 +60,26 @@ header .flex{
     justify-content: space-between;}
 
 header p, header a{
-    /*font-size: 0.9em;*/
     font-size: 1em;}
 
 header p:first-child{
     letter-spacing: 3px;}
 
 header nav{
-    /*margin: -3px 30px 0 0;*/
-    margin: 0 2% 0 0;}
+    margin: 0 5% 0 0;}
 
 header a{   
     padding: 0 5px 10px 5px;
-   
-    /*margin: 0 25px;*/
-    margin: 0 2vw;}
+    margin: 0 1.7em;}
 
 header a:hover{
     border-bottom: 2px solid #A3B0BC;}
 
 header h1{
-    /*margin-top: 180px;*/
-    margin-top: 16%;
-    /*font-size: 2.8em;*/
+    margin-top: 15%;
     font-size: 3em;
     letter-spacing: 10px;
-    /*margin-left: 40px*/;
-    margin-left: 2vw;}
+    margin-left: 2.5%;}
 
 header h1 span:first-child{
     font-family: 'Fanwood Text', serif;
@@ -97,18 +90,14 @@ header h1 span:last-child{
     vertical-align: super;}
 
 header .layout>p{
-    /*padding-bottom: 160px;*/
     padding-bottom: 13%;}
 
 header .button{
     display: block;
     margin: 0 auto;
-    /*width: 180px;*/
-    width: 12%;
-    /*padding: 18px 22px;*/
+    width: 10%;
     padding: 1.5% 4%;
     border: 2px solid #fff;
-    /*font-size: 0.9em;*/
     font-size: 1em;}
 
 header .button:hover{
@@ -120,26 +109,23 @@ header .button:hover{
 .top .flex{
     justify-content: space-between;}
 
+.top .item{
+   align-self: flex-start;}
+
 .top{
-    /*padding: 80px 0 120px 0;*/
     padding: 7% 0 10% 0;}
 
 .top p, .top .flex div{
-    /*margin-top: -5px;*/
-    margin-top: -1%;
     width: 95%;}
 
 .top .flex div p{
-    /*font-size: 1.5em;*/
     font-size: 1.8em;
     text-align: left;}
 
 .top .flex div p:first-child{
-    /*margin-bottom: 5px;*/
     margin-bottom: 2%;}
 
 .top p:last-child{
-    /*font-size: 0.9em;*/
     font-size: 1em;
     text-align: justify;}
 
@@ -147,16 +133,12 @@ header .button:hover{
 /** middle **/
 .middle{
     background-color: #F3F3F3;
-    /*padding-bottom: 180px;*/
     padding-bottom: 16%;}
 
 .middle .layout>h2{
-    /*font-size: 1.55em;*/
     font-size: 1.7em;
-    /*margin: 80px 0;*/
     margin: 8% 0;}
 
-/** background-images **/
 
 .middle .grid-top{
     grid-template-columns: 2fr 1fr;
@@ -168,7 +150,6 @@ header .button:hover{
     grid-column-gap: 2em;}
 
 .middle .box{
-    /*height: 300px;*/
     height: 22vw;
     width: 100%;
     border: 1px solid #fff;
@@ -196,28 +177,22 @@ header .button:hover{
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 60%, rgba(0, 0, 0, 0.4) 100%);}
 
 .middle .box p{
-    /*font-size: 1em;*/
     font-size: 1.3em;
     position: absolute;
     text-shadow: 2px 2px 1px black;
-    /*bottom: 25px;
-    left: 30px;*/
     bottom:10%;
-    left: 5%;
+    left: 4%;
     z-index: 1;}
 
 .middle .img2 p, .middle .img3 p{
-    left: 10%;}
+    left: 7.5%;}
 
 .middle .box .likes{
     position: absolute;
-    /*padding: 8px 13px;*/
     padding: 1.3% 2%;
     background-color: #625F60;
-    /*right: 20px;
-    top: 20px;*/
     right:3%;
-    top:8%;
+    top:6%;
     border: 2px solid #fff;
     z-index: 1;
     transition: 1s;}
@@ -227,12 +202,12 @@ header .button:hover{
     right: 6%;}
 
 .middle .box .likes span{
-    font-size: 0.95em;
+    font-size: 1em;
     transition: 1s;}
 
 .middle .box:hover{
     border: 1px solid #333;
-    -webkit-filter: contrast(130%);  }
+    -webkit-filter: contrast(130%);}
 
 .middle .box:hover .likes{
     border: 2px solid #666;
@@ -241,103 +216,40 @@ header .button:hover{
 .middle .box:hover .likes span{
     color:#000;} 
 
-
-
-/** src images **/
-/*
-.middle .flex{
-    display: flex;
-    justify-content: space-between;}
-
-.middle .box{
-    position: relative;
-    width: 67.54%;}
-
-.middle .half-size{
-    width: 32.46%;}
-
-.middle .box:nth-child(odd){
-    margin: 0 1% 1.5% 0;}
-
-.middle .box:nth-child(even){
-    margin-left: 1%;}
-
-.middle .box img{
-    width: 100%;
-    border: 1px solid #fff;
-    transition: 0.5s;}
-
-.middle .box .likes{
-    background-color: #625F60;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    padding: 8px 12px;
-    border: 2px solid #fff;
-    z-index: 1;
-    transition: 1.5s;}
-
-.middle .box div span{
-    font-size: 0.9em;}
-
-.middle .box p{*/
-    /*font-size: 1em;
-    font-size: 1.3em;
-    position: absolute;
-    margin-top: -55px;
-    left: 30px;
-    text-shadow: 2px 2px 5px black;
-    z-index: 1;}
-
-.middle .box:hover img{ 
-    border: 1px solid #333;
-    -webkit-filter: contrast(120%);  
-     transform: scale(1.01);}
-
-.middle .box:hover .likes{
-    border: 2px solid #555;
-    background-color: #fff;
-    color:#000;}
-
-.middle .box:hover .likes span{
-    color:#000;} */
-/***************** ************/
-
 .middle .newsletter{
-    /*padding: 85px 60px 60px 60px;*/
     padding: 7% 8% 6% 8%;
-    /*margin-top: 80px;*/
     margin-top: 8%;
     background-color: #fff;}
 
 .middle .newsletter .outer{
-     /*grid-template-columns: 50% 50%;*/
      grid-template-columns: 40% 60%;}
 
 .middle .newsletter .inner{
-    margin-top: -15px;
-    margin-top: -1.5%;
     grid-template-columns: 70% 30%;}
 
+.middle .newsletter .item{
+    align-self:center;}
+
 .middle .newsletter p{
-    /*font-size: 1.4em;*/
     font-size: 1.75em;}
 
 .middle .newsletter input{
     margin-left: 5px;
     background-color: #F3F3F3; 
-    /*height: 58px;*/
-    /*font-size: 0.85em;*/
-    font-size: 1em;
-    /*padding: 0 20px;*/
-    padding: 5% 10%;
+    height: 3.4em;
+    font-size: 1.1em;
+    padding: 1% 5%;
+    padding-left: 2em;
     border: 1px solid #4E5051;
     color: #000;}
 
+.middle .newsletter input::placeholder{
+    color: #000;}
+
 .middle .newsletter .button{
-    font-size: 1em;
+    font-size: 1.1em;
     position: relative;
-    left: -2px;
+    left: -3px;
     background-color: #343638;
     border: none;}
 
@@ -348,7 +260,6 @@ header .button:hover{
 
 /** bottom **/
 .bottom{
-    /*padding: 90px 0;*/
     padding: 7% 0;}
 
 .bottom .flex{
@@ -356,15 +267,12 @@ header .button:hover{
 
 .bottom .flex>div:not(:last-child){
     padding-right: 20px;
-    /*max-width: 200px;*/
     width: 18%;}
 
 .bottom .flex>div:last-child{
-    /*max-width: 260px;*/
     width: 25%;}
 
 .bottom h3{
-    /*margin-bottom: 20px;*/
     margin-bottom: 9%;
     font-size: 1.3em;}
 
@@ -377,9 +285,7 @@ header .button:hover{
 
 .bottom p, .bottom a{
     color: #A4A4A4;
-    font-weight: bold;
-    /*font-size: 0.85em;
-    padding-bottom: 8px;*/
+    font-weight: lighter;
     font-size: 1em;
     padding-bottom: 3%;}
 
@@ -388,21 +294,17 @@ header .button:hover{
 
 .bottom .tweet p:nth-child(2){
     font-style: italic;
-    /*line-height: 1.6em;*/
     line-height: 1.5em;}
 
 .bottom .tweet p:nth-child(3){
     color: #DBDBDB;
-    /*margin-top: 10px;*/
     margin-top: 2%;}
 
 .bottom .bigger{
-    /*font-size: 0.88em;*/
     font-size: 1.1em;
     margin-top: -4%;}
 
 .bottom .flex div:last-child p{
-    /*padding-bottom: 30px;*/
     padding-bottom: 10%;}
 
 .bottom .grid{
@@ -410,21 +312,17 @@ header .button:hover{
 
 .bottom input{
     background-color: #F3F3F3; 
-    /*height: 25px;
-    font-size: 0.8em;
-    padding: 10px 10px 10px 15px;*/
-    
-    padding: 10%;
-    font-size: 0.95em;
+    height: 3.2em;
+    padding: 2% 10%;
+    font-size: 1em;
     border: 1px solid #343638;
     color: #757588;
     font-style: italic;}
 
 .bottom .button{
     position: relative;
-    left: -1px;
-    /*font-size: 0.8em;*/
-    font-size: 0.95em;
+    left: -0.1em;
+    font-size: 1em;
     border: 1px solid #343638;
     background-color: #343634;}
 
@@ -435,7 +333,6 @@ header .button:hover{
 
 /** footer **/
 footer{
-    /*padding-bottom: 20px;*/
     padding-bottom: 2%;}
 
 footer hr{
@@ -443,27 +340,20 @@ footer hr{
     background-color: #F0F0F0; 
     height: 2px;}
 
-footer nav{
-    /*margin-top: -2px;*/}
-
 footer .flex{
-    /*margin-top: 30px;*/
     margin-top: 3%;
     justify-content: space-between;}
 
 footer p, footer a{
-    /*font-size: 0.85em;*/
     font-size: 1em;}
 
 footer p{
     color: #9E9E9E;}
 
 footer a{
-    /*margin-left: 40px;
-    padding: 0 0 5px 5px;*/
-    margin-left: 2vw;
-    padding: 0 0 5px 5px;
+    margin-left: 2em;
+    padding: 0 5px 5px 5px;
     color: #000;}
 
 footer a:hover{
-    border-bottom: 2px solid #555;}
+    color: #555;}
