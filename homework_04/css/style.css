@@ -4,11 +4,10 @@
 
 .container{
     width: 100%;  
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1vw;}
+    font-family: 'Open Sans', sans-serif;}
 
 .layout{
-    max-width: 90%;
+    max-width: 1190px;
     margin: 0 auto;
     padding: 3% 5% 0 5%;}
 
@@ -23,6 +22,9 @@
 
 .align-center{
     text-align: center;}
+
+.justify{
+    text-align: justify;}
 
 .weight-normal{
     font-weight: normal;}
@@ -52,34 +54,37 @@ input:focus{
 header{
     background: url(../img/apples.jpg) center no-repeat;
     background-size: cover;
-    padding-bottom: 7%;
+    padding-bottom: 100px;
     background-attachment: fixed;}
 
 header .flex{    
     display: flex;
     justify-content: space-between;}
 
+header nav{
+    margin-right: 50px;}
+
 header p, header a{
-    font-size: 1em;}
+    font-size: 0.9em;}
 
 header p:first-child{
     letter-spacing: 3px;}
 
-header nav{
-    margin: 0 5% 0 0;}
+header .item{
+   align-self: center;}
 
 header a{   
     padding: 0 5px 10px 5px;
-    margin: 0 1.7em;}
+    margin: 0 25px;}
 
 header a:hover{
     border-bottom: 2px solid #A3B0BC;}
 
 header h1{
     margin-top: 15%;
-    font-size: 3em;
+    font-size: 2.8em;
     letter-spacing: 10px;
-    margin-left: 2.5%;}
+    margin-left: 30px;}
 
 header h1 span:first-child{
     font-family: 'Fanwood Text', serif;
@@ -95,10 +100,10 @@ header .layout>p{
 header .button{
     display: block;
     margin: 0 auto;
-    width: 10%;
-    padding: 1.5% 4%;
+    width: 140px;
+    padding: 18px 30px;
     border: 2px solid #fff;
-    font-size: 1em;}
+    font-size: 0.9em;}
 
 header .button:hover{
     border: 2px solid #999;}
@@ -107,114 +112,91 @@ header .button:hover{
 /** main **/
 /** top **/
 .top .flex{
-    justify-content: space-between;}
-
-.top .item{
-   align-self: flex-start;}
+    justify-content:space-between;}
 
 .top{
-    padding: 7% 0 10% 0;}
+    padding: 80px 0 140px 0;}
 
 .top p, .top .flex div{
-    width: 95%;}
+    width: 90%;}
+
+.top .item{
+    align-self: flex-start;}
 
 .top .flex div p{
-    font-size: 1.8em;
+    font-size: 1.4em;
     text-align: left;}
 
 .top .flex div p:first-child{
-    margin-bottom: 2%;}
+    margin-bottom: 5px;}
 
 .top p:last-child{
-    font-size: 1em;
+    font-size: 0.9em;
     text-align: justify;}
 
 
 /** middle **/
 .middle{
     background-color: #F3F3F3;
-    padding-bottom: 16%;}
+    padding-bottom: 160px;}
 
 .middle .layout>h2{
-    font-size: 1.7em;
-    margin: 8% 0;}
+    font-size: 1.55em;
+    margin: 80px 0;}
 
-
-.middle .grid-top{
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 2em;
-    padding-bottom: 2em;}
-
-.middle .grid-bottom {
-    grid-template-columns: 1fr 2fr;
-    grid-column-gap: 2em;}
+.middle .flex{
+    display: flex;
+    justify-content: space-between;}
 
 .middle .box{
-    height: 22vw;
-    width: 100%;
-    border: 1px solid #fff;
-    background-size: cover !important;
     position: relative;
-    transition: 0.5s;}
+    margin: 1em;}
 
-.middle .img1{
-    background: url(../img/sample.jpg) no-repeat center;}
+.middle .item1 .middle .item3{
+    margin-left: 0;}
 
-.middle .img2{
-    background: url(../img/sample2.jpg) no-repeat center;}
+.middle .item2, .middle .item4{
+    margin-right: 0;}
 
-.middle .img3{
-    background: url(../img/sample2.jpg) no-repeat center;}
-
-.middle .img4{
-    background: url(../img/sample3.jpg) no-repeat center;}
-
-.middle .box:after{
-  content: "";
-    position: absolute;
-    width: 100%;
+.middle .box img{
+    transition: 0.8s;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 60%, rgba(0, 0, 0, 0.4) 100%);}
-
-.middle .box p{
-    font-size: 1.3em;
-    position: absolute;
-    text-shadow: 2px 2px 1px black;
-    bottom:10%;
-    left: 4%;
-    z-index: 1;}
-
-.middle .img2 p, .middle .img3 p{
-    left: 7.5%;}
+    width: 100%;
+    border: 1px solid #fff;}
 
 .middle .box .likes{
-    position: absolute;
-    padding: 1.3% 2%;
     background-color: #625F60;
-    right:3%;
-    top:6%;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 8px 12px;
     border: 2px solid #fff;
     z-index: 1;
-    transition: 1s;}
+    transition: 1.5s;}
 
-.middle .img2 .likes, .middle .img3 .likes{
-    padding: 2.3% 4%;
-    right: 6%;}
+.middle .box div span{
+    font-size: 0.9em;}
 
-.middle .box .likes span{
-    font-size: 1em;
-    transition: 1s;}
+.middle .box p{
+    font-size: 1.2em;
+    position: absolute;
+    margin-top: -55px;
+    left: 30px;
+    text-shadow: 2px 2px 5px black;
+    z-index: 1;}
 
-.middle .box:hover{
+.middle .box:hover img{ 
     border: 1px solid #333;
-    -webkit-filter: contrast(130%);}
+    -webkit-filter: contrast(120%);  
+     transform: scale(1.01);}
 
 .middle .box:hover .likes{
-    border: 2px solid #666;
-    background-color: #ddd;}
+    border: 2px solid #555;
+    background-color: #fff;
+    color:#000;}
 
 .middle .box:hover .likes span{
-    color:#000;} 
+    color:#000;}
 
 .middle .newsletter{
     padding: 7% 8% 6% 8%;
@@ -222,24 +204,23 @@ header .button:hover{
     background-color: #fff;}
 
 .middle .newsletter .outer{
-     grid-template-columns: 40% 60%;}
-
-.middle .newsletter .inner{
-    grid-template-columns: 70% 30%;}
+     grid-template-columns: 50% 50%;}
 
 .middle .newsletter .item{
     align-self:center;}
 
+.middle .newsletter .inner{
+    grid-template-columns: 60% 30%;}
+
 .middle .newsletter p{
-    font-size: 1.75em;}
+    font-size: 1.4em;}
 
 .middle .newsletter input{
     margin-left: 5px;
     background-color: #F3F3F3; 
-    height: 3.4em;
-    font-size: 1.1em;
+    height: 4em;
+    font-size: 0.85em;
     padding: 1% 5%;
-    padding-left: 2em;
     border: 1px solid #4E5051;
     color: #000;}
 
@@ -247,9 +228,9 @@ header .button:hover{
     color: #000;}
 
 .middle .newsletter .button{
-    font-size: 1.1em;
+    font-size: 1em;
     position: relative;
-    left: -3px;
+    left: -2px;
     background-color: #343638;
     border: none;}
 
@@ -260,21 +241,21 @@ header .button:hover{
 
 /** bottom **/
 .bottom{
-    padding: 7% 0;}
+    padding: 80px 0;}
 
 .bottom .flex{
     justify-content: space-between;}
 
 .bottom .flex>div:not(:last-child){
     padding-right: 20px;
-    width: 18%;}
+    width: 20%;}
 
 .bottom .flex>div:last-child{
     width: 25%;}
 
 .bottom h3{
     margin-bottom: 9%;
-    font-size: 1.3em;}
+    font-size: 1.2em;}
 
 .bottom a{
     display: block;}
@@ -285,12 +266,14 @@ header .button:hover{
 
 .bottom p, .bottom a{
     color: #A4A4A4;
-    font-weight: lighter;
-    font-size: 1em;
+    font-size: 0.825em;
     padding-bottom: 3%;}
 
 .bottom p{
     line-height: 1.8em;}
+
+.bottom p.justify{
+    padding-right: 20%;}
 
 .bottom .tweet p:nth-child(2){
     font-style: italic;
@@ -301,8 +284,8 @@ header .button:hover{
     margin-top: 2%;}
 
 .bottom .bigger{
-    font-size: 1.1em;
-    margin-top: -4%;}
+    font-size: 0.88em;
+    margin-top: -10px;}
 
 .bottom .flex div:last-child p{
     padding-bottom: 10%;}
@@ -312,9 +295,9 @@ header .button:hover{
 
 .bottom input{
     background-color: #F3F3F3; 
+    font-size: 0.8em;
     height: 3.2em;
     padding: 2% 10%;
-    font-size: 1em;
     border: 1px solid #343638;
     color: #757588;
     font-style: italic;}
@@ -322,7 +305,7 @@ header .button:hover{
 .bottom .button{
     position: relative;
     left: -0.1em;
-    font-size: 1em;
+    font-size: 0.8em;
     border: 1px solid #343638;
     background-color: #343634;}
 
@@ -345,15 +328,18 @@ footer .flex{
     justify-content: space-between;}
 
 footer p, footer a{
-    font-size: 1em;}
+    font-size: 0.85em;}
 
 footer p{
     color: #9E9E9E;}
 
 footer a{
-    margin-left: 2em;
+    margin-left: 25px;
     padding: 0 5px 5px 5px;
     color: #000;}
 
 footer a:hover{
-    color: #555;}
+    color:#ccc;}
+
+footer .item{
+    align-self: center;}
