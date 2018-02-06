@@ -6,10 +6,10 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;}
 
-.content{
+.wrapper{
     max-width: 85%;
     margin: 0 auto;
-    padding: 2% 10% 1% 10%;}
+    padding: 25px 10% 10px 10%;}
 
 .flex{
     display: flex;}
@@ -23,9 +23,7 @@ a{
 
 /** header **/
 header .flex{
-    margin-top: 5px;
-    justify-content: flex-start;
-    align-items: flex-start;}
+    justify-content: flex-start;}
 
 header nav{
     margin: 15px 0 0 40px;}
@@ -43,6 +41,7 @@ header a:hover{
 
 /** main **/
 main .banner{
+    margin-top: 5px;
     background: url(../img/banner.jpg) no-repeat center;
     background-size: cover;
     height: 32vw;}
@@ -62,29 +61,29 @@ main .grid{
     grid-row-gap: 1.5em;
     margin: 0 auto;}
 
-main .content{
+main .content .wrapper{
     padding-top: 1.5em;
     padding-bottom: 1.5em;}
 
-main .item{
+main .content .item{
     padding: 4%;
     padding-bottom: 6%;
     background-color: #CCCCCC;
     transition: 0.5s;}
 
-main .description h3{
+main .content .description h3{
     padding: 2% 0;
     color: #333;}
 
-main .description p{
+main .content .description p{
     color:#464547;
     font-size: 0.96em;
     font-weight: bold;}
 
-main img{
+main .content img{
     width: 100%;}
 
-main .item:hover{
+main .content .item:hover{
     background-color: #39c2d7;}
 
 
@@ -92,6 +91,10 @@ main .item:hover{
 footer{
     background-color: #39c2d7;
     padding-bottom: 0.5em;}
+
+footer ul{
+    list-style-type: none;
+    display: flex;}
 
 footer a, footer p{
     color: #fff;
@@ -114,43 +117,42 @@ footer a:hover{
         align-items: center;}
     
     header nav{
-        margin: 3% 0 2% 0;}
+        margin: 20px 0 10px 0;}
     
     main h1{
-        width: 80%;
+        width: 90%;
         text-align: center;
         font-size: 2em;
-        
         margin: 0 auto;}
     
     main .grid{
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;}
     
-    main .content{
+    main .content .wrapper{
         padding: 1.5em;
         max-width: 100%;}
     
-    main .item .img{
+    main .content .item .img{
         padding: 0 8% 0 8%;}
 
     footer .flex{
         flex-direction: column;
         align-items: center;}
     
-    footer nav{
-        padding-bottom: 15px;}
+    footer ul{
+        margin-bottom: 20px;}
     
-    footer a{
-        padding: 0 5px;}
+    footer ul li a{
+        margin: 0 12px;}
 }
 
 
 @media screen and (max-width: 575px) {
-    .content{
+    
+    .wrapper{
         max-width: 100%;
-        padding: 0;
-        margin: 0;}
+        padding: 0;}
     
     header .flex{
         flex-direction: column;
@@ -160,8 +162,10 @@ footer a:hover{
         margin: 0;}
     
     header .logo{
-        padding: 3% 0;
-        margin: 0 auto;}
+        margin: 20px auto 10px;}
+    
+    header .logo img{
+        height: 40px;}
     
     header nav{    
         display: flex;
@@ -181,7 +185,8 @@ footer a:hover{
     header a span{
         padding-left: 20px;}
     
-    main .banner{    
+    main .banner{   
+        margin: 0;
         display: flex;
         align-items: flex-end;
         height: 45vw;}
@@ -192,24 +197,25 @@ footer a:hover{
         background-color: #39c2d7;
         padding: 0.7em;}
     
-    main .content{
+    main .wrapper{
         padding: 1.5em;}
     
     main .grid{
         grid-template-columns: 1fr;}
     
-    footer .content{
+    footer .wrapper{
         padding: 1em 0;}
     
-    footer nav{
-        display: flex;
-        flex-direction: column;
-        align-items: center;}
+    footer ul{
+        display: inline-block;
+        text-align: center;}
     
-    footer nav a{
-        padding: 2% 0;
+    footer ul li{
+        padding: 2% 0;}
+    
+    footer ul li a{
         margin: 0;}
     
      footer p, footer a{
-        font-size: 0.88em;}
+        font-size: 0.9em;}
 }
