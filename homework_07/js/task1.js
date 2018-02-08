@@ -1,4 +1,4 @@
-var number = parseFloat(prompt("Enter natural number [0 < N <= 20]:"));
+var number = parseInt(prompt("Enter natural number [0 < N <= 20]:"));
 
 if(isNaN(number) || number <= 0 || number > 20 || number % 1 != 0){
     console.log("Incorrect")
