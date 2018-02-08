@@ -1,6 +1,6 @@
-var a = +prompt("Input first side of triangle:");
-var b = +prompt("Input second side of triangle:");
-var c = +prompt("Input third side of triangle:");
+var a = parseFloat(prompt("Input first side of triangle:"));
+var b = parseFloat(prompt("Input second side of triangle:"));
+var c = parseFloat(prompt("Input third side of triangle:"));
 
 
 if(isNaN(a) || isNaN(b) || isNaN(c) || a + b <= c || a + c <= b ||  b + c <= a) console.log("Incorrect data");

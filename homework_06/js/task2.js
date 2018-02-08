@@ -1,5 +1,5 @@
-var eur = +prompt("Input amount of EURO:");
-var usd = +prompt("Input amount of USD:");
+var eur = parseFloat(prompt("Input amount of EURO:"));
+var usd = parseFloat(prompt("Input amount of USD:"));
 
 
 if(isNaN(eur) || isNaN(usd) || eur <= 0 || usd <= 0) console.log("Incorrect data");
