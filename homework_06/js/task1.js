@@ -3,12 +3,16 @@ var b = parseFloat(prompt("Input second side of triangle:"));
 var c = parseFloat(prompt("Input third side of triangle:"));
 
 
-if(isNaN(a) || isNaN(b) || isNaN(c) || a + b <= c || a + c <= b ||  b + c <= a) console.log("Incorrect data");
-else{    
+if(isNaN(a) || isNaN(b) || isNaN(c) || a + b <= c || a + c <= b ||  b + c <= a){
+    console.log("Incorrect data");  
+} else{    
     var p = (a + b + c) / 2;
     var s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
     
-    if((s % 1) != 0) s = s.toFixed(2);
+    if((s % 1) != 0){
+        s = s.toFixed(2); 
+    } 
+    
     console.log("Type of triangle is " + getTypeOfTriangle(a, b, c) + " triangle and square is " + s);
 }
 
