@@ -46,14 +46,15 @@ while(switcher){
             third_prize *= 3;
             max_value *= 2;
         } else{
-            printPrice(prize);
-            switcher = !playAgain();
+            printPrize(prize);
+            switcher = playAgain();
+            prize = 0;
         }
     } else{
         prize += 0;
-        printPrice(prize);
-        prize = 0;
+        printPrize(prize);
         switcher = playAgain();
+        prize = 0;
     }   
 }
 
@@ -68,6 +69,6 @@ function getPrize(n){
     else return 0;
 }
 
-function printPrice(p){
+function printPrize(p){
    console.log("Thank you for a game. Your prize is: " + p + "$"); 
 }
