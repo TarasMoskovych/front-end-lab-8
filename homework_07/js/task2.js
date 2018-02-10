@@ -1,11 +1,11 @@
 var switcher = true;
-var max_value = 5;
+var maxValue = 5;
 
-var prize = 0;
+var userPrize = 0;
 
-var first_prize = 10;
-var second_prize = 5;
-var third_prize = 2;
+var firstPrize = 10;
+var secondPrize = 5;
+var thirdPrize = 2;
 
 if(!confirm("Do you want to play a game?")){
     console.log("You did not become a millionaire");
@@ -13,27 +13,34 @@ if(!confirm("Do you want to play a game?")){
 }
 
 while(switcher){
-    var computer_number = Math.floor(Math.random() * (max_value - 0 + 1)) + 0;
+    var computerNumber = Math.floor(Math.random() * (maxValue - 0 + 1)) + 0;
 
-    console.log(computer_number); //cheating :)
+    console.log(computerNumber); //cheating :)
 
     for(var i = 3; i >= 1; i--){
         var flag = false;
-        var possible_prize = first_prize;
         
+        var possiblePrize = firstPrize;
         if(i == 2){
-            possible_prize = second_prize;
+            possiblePrize = secondPrize;
         } else if(i == 1){
-            possible_prize = third_prize;
+            possiblePrize = thirdPrize;
         }
         
-        var user_number = Number(prompt("Enter a number from 0 to " + max_value +
+        var userNumber = Number(prompt("Enter a number from 0 to " + maxValue +
                                       "\nAttempts left: " + i +
-                                      "\nTotal prize: " + prize + "$" + 
-                                      "\nPossible prize on current attempt: " + possible_prize + "$"));
+                                      "\nTotal prize: " + userPrize + "$" + 
+                                      "\nPossible prize on current attempt: " + possiblePrize + "$"));
            
-       if(user_number == computer_number){
-           prize += getPrize(i);
+       if(userNumber == computerNumber){
+           if(i == 3){
+               userPrize = firstPrize;
+           } else if(i == 2){
+               userPrize = secondPrize;
+           } else{
+               userPrize = thirdPrize;
+           }
+           
            flag = true;
            break;   
         }
@@ -41,34 +48,17 @@ while(switcher){
     
     if(flag){
         if(confirm("Do you want to continue?")){
-            first_prize *= 3;
-            second_prize *= 3;
-            third_prize *= 3;
-            max_value *= 2;
+            firstPrize *= 3;
+            secondPrize = Math.floor(firstPrize / 2);
+            thirdPrize = Math.floor(secondPrize / 2);
+            maxValue *= 2;
         } else{
-            printPrize(prize);
-            switcher = playAgain();
+            console.log("Thank you for a game. Your prize is: " + userPrize + "$");
             prize = 0;
+            switcher = confirm("Do you want to play again?"); 
         }
     } else{
-        prize += 0;
-        printPrize(prize);
-        switcher = playAgain();
-        prize = 0;
+        console.log("Thank you for a game. Your prize is: " + userPrize + "$"); 
+        switcher = confirm("Do you want to play again?");  
     }   
-}
-
-function playAgain(){
-     return confirm("Do you want to play again?");
-}
-     
-function getPrize(n){
-    if(n == 3) return first_prize;
-    else if(n == 2) return second_prize;
-    else if (n == 1) return third_prize;
-    else return 0;
-}
-
-function printPrize(p){
-   console.log("Thank you for a game. Your prize is: " + p + "$"); 
 }
