@@ -1,25 +1,25 @@
-var number = parseInt(prompt("Enter natural number [0 < N <= 20]:"));
+var naturalNumber = Number(prompt("Enter natural number from 1 to 20:"));
 
-if(isNaN(number) || number <= 0 || number > 20 || number % 1 != 0){
-    console.log("Incorrect")
+if(isNaN(naturalNumber) || !Number.isInteger(naturalNumber) || naturalNumber <= 0 || naturalNumber > 20){
+    console.error("Incorrect")
 } else{
-    let left = number;
-    let right = number;
+    var left = naturalNumber;
+    var right = naturalNumber;
     
-    let str = "";
+    var pyramid = "";
     
-    for(let i = 1; i <= number; i++){
-        for(let j = 1; j <= (number * 2) - 1; j++){
+    for(var i = 1; i <= naturalNumber; i++){
+        for(var j = 1; j <= (naturalNumber * 2) - 1; j++){
             if(j < left || j > right){
-                str = str.concat("   ");
+                pyramid += "   ";
             } else{
-                str = str.concat("[~]");
+                pyramid += "[~]";
             }
         }
         
         left--;
         right++;
-        str = str.concat("\n");
+        pyramid += "\n";
     }
-    console.log(str);
+    console.log(pyramid);
 }
