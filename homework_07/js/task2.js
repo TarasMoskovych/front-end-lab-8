@@ -19,8 +19,6 @@ if(!confirm("Do you want to play a game?")){
 while(switcher){
     computerNumber = Math.floor(Math.random() * (maxValue - 0 + 1)) + 0;
     reset = false;
-    
-    console.log(computerNumber);
 
     for(var i = 3; i >= 1; i--){
         victory = false;
@@ -33,14 +31,12 @@ while(switcher){
             possiblePrize = thirdPrize;
         }
         
-        userNumber = Number(prompt("Enter a number from 0 to " + maxValue +
+        userNumber = prompt("Enter a number from 0 to " + maxValue +
                                          "\nAttempts left: " + i +
                                          "\nTotal prize: " + userPrize + "$" + 
-                                         "\nPossible prize on current attempt: " + possiblePrize + "$"));
-        
-        if(isNaN(userNumber) || !parseInt(userNumber)){
-            continue;
-        } else if(userNumber == computerNumber){
+                                         "\nPossible prize on current attempt: " + possiblePrize + "$");
+
+        if(userNumber == computerNumber.toString()){
            if(i == 3){
                userPrize = firstPrize;
            } else if(i == 2){
@@ -60,14 +56,13 @@ while(switcher){
             thirdPrize = Math.floor(secondPrize / 2);
             maxValue *= 2;
         } else{
-            console.log("Thank you for a game. Your prize is: " + userPrize + "$"); 
             reset = true;
         }
     } else{
-        console.log("Thank you for a game. Your prize is: " + userPrize + "$"); 
         reset = true;
     }  
     if(reset){
+        console.log("Thank you for a game. Your prize is: " + userPrize + "$");
         if(confirm("Do you want to play again?")){
             userPrize = 0;
             firstPrize = 10;
