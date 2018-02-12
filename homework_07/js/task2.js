@@ -1,15 +1,12 @@
 var switcher = true;
 var maxValue = 5;
 var userPrize = 0;
-var firstPrize = 10;
-var secondPrize = 5;
-var thirdPrize = 2;
+var maxPrize = 10;
 var computerNumber, 
     userNumber, 
     victory, 
     possiblePrize,
     reset;
-
 
 if(!confirm("Do you want to play a game?")){
     console.log("You did not become a millionaire");
@@ -19,16 +16,16 @@ if(!confirm("Do you want to play a game?")){
 while(switcher){
     computerNumber = Math.floor(Math.random() * (maxValue - 0 + 1)) + 0;
     reset = false;
-
+  
     for(var i = 3; i >= 1; i--){
         victory = false;
         
         if(i == 3){
-           possiblePrize = firstPrize; 
+           possiblePrize = maxPrize; 
         } else if(i == 2){
-            possiblePrize = secondPrize;
+            possiblePrize = Math.floor(possiblePrize / 2);
         } else{
-            possiblePrize = thirdPrize;
+            possiblePrize = Math.floor(possiblePrize / 2);
         }
         
         userNumber = prompt("Enter a number from 0 to " + maxValue +
@@ -37,13 +34,7 @@ while(switcher){
                                          "\nPossible prize on current attempt: " + possiblePrize + "$");
 
         if(userNumber == computerNumber.toString()){
-           if(i == 3){
-               userPrize = firstPrize;
-           } else if(i == 2){
-               userPrize = secondPrize;
-           } else{
-               userPrize = thirdPrize;
-           }
+           userPrize += possiblePrize;
            victory = true;
            break;   
         }
@@ -51,23 +42,21 @@ while(switcher){
     
     if(victory){
         if(confirm("Do you want to continue?")){
-            firstPrize *= 3;
-            secondPrize = Math.floor(firstPrize / 2);
-            thirdPrize = Math.floor(secondPrize / 2);
+            maxPrize *= 3;
             maxValue *= 2;
         } else{
             reset = true;
         }
     } else{
+        userPrize = 0;
         reset = true;
     }  
+    
     if(reset){
         console.log("Thank you for a game. Your prize is: " + userPrize + "$");
         if(confirm("Do you want to play again?")){
             userPrize = 0;
-            firstPrize = 10;
-            secondPrize = 5;
-            thirdPrize = 2;
+            maxPrize = 10;
             maxValue = 5; 
         } else{
             switcher = false;
