@@ -7,5 +7,5 @@ function getTransformedArray(arr, transformFunction){
 }
 
 function transformFunction(num){
-    return num+1;
+    return num + 1;
 }
