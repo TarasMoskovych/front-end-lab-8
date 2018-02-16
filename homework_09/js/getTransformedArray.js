@@ -1,11 +1,11 @@
-function getTransformedArray(arr, func){
+function getTransformedArray(arr, transformFunction){
     let newArr = [];
-    forEach(arr, function(item) {
-        newArr.push(increment(item));
+    forEach(arr, function(item, index) {
+        newArr[index] = transformFunction(item);
     });
     return newArr;
 }
 
-function increment(num){
+function transformFunction(num){
     return num+1;
 }
