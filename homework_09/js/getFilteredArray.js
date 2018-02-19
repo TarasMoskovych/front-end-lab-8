@@ -7,7 +7,3 @@ function getFilteredArray(arr, predicateFunction){
     });
     return newArr;
 }
-
-function predicateFunction(num) { 
-    return num > 3;
-} 

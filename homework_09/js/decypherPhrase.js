@@ -1,5 +1,3 @@
-var charactersMap = {a: "o", c: "d", t: "g"};
-
 function decypherPhrase(obj, str){
     let decypherObj = {};
     let value;
