@@ -1,7 +1,7 @@
 function getTransformedArray(arr, transformFunction){
     let newArr = [];
     forEach(arr, function(item, index) {
-        newArr[index] = transformFunction(item);
+        newArr.push(transformFunction(item));
     });
     return newArr;
 }
