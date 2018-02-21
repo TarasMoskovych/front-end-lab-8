@@ -1,7 +1,5 @@
 function debounce(callback, delay){
     let timeoutId;
-    iterator++;
-    
     return function () {    
         clearTimeout(timeoutId); 
         timeoutId = setTimeout(callback, delay);    
