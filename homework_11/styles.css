@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    padding: 20px;
+}
+
+.paragraph{
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: flex-end;    
+}
+
+.paragraph.level2{
+    margin-left: 15px;
+}
+
+.paragraph.level3{
+    margin-left: 30px;
+}
+
+.paragraph.text{
+    font-style: italic;
+}
+
+.paragraph.bg-color:hover{
+    background-color: #EFEFEF;
+}
+
+.paragraph:hover{
+    cursor: pointer;
+}
+
+.image{
+    padding-right: 3px;
+}
+
+.folder{
+    color: #EDBC0B;
+}
+
+.file{
+    color: #BBB;
+}
+
+.shown{
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
