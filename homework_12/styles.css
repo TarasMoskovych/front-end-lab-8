@@ -6,14 +6,17 @@
 .thumbnails{
     background-color: #1C1C1E; 
     padding: 10px;
-    color: #A09D89;
+    color: #A09D88;
 }
 
-.grid-container{
-    
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 2em;
+h1{
+    padding: 10px;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .item img{
@@ -21,8 +24,8 @@
 }
 
 .item{
+    flex-basis: 200px;
     margin-bottom: 2em;
-    
 }
 
 .item:hover{
@@ -31,7 +34,6 @@
 }
 
 .tank-name{
-    padding: 10px;
     display: flex;
     justify-content: center; 
 }

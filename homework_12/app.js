@@ -7,11 +7,12 @@ function tree(tanks, parent){
     var h1 = createElement("h1", "h1", "Most popular tanks");
     parent.appendChild(h1);
     
-    var grid = createElement("div", "grid-container");
+    var grid = createElement("div", "flex-container");
     parent.appendChild(grid);
     
     for(var i = 0; i < tanks.length; i++){
-        var tankItem = createElement("div", "item");
+        var tankItem = createElement("a", "item");
+        tankItem.setAttribute("title", "Click to details");
         
         var tankImg = createElement("img");
         tankImg.setAttribute("src", tanks[i].preview);
@@ -22,12 +23,14 @@ function tree(tanks, parent){
         
         var country = createElement("img");
         country.setAttribute("src", tanks[i].country_image);
+        country.setAttribute("title", tanks[i].country);
         
         var level = createElement("p");
         level.textContent = tanks[i].level;
         
         var model = createElement("p", "uppercase");
         model.textContent = tanks[i].model;
+        model.setAttribute("title", tanks[i].model)
         
         imgContainer.appendChild(country);
         
