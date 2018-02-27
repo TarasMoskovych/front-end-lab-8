@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.thumbnails{
+    background-color: #1C1C1E; 
+    padding: 10px;
+    color: #A09D89;
+}
+
+.grid-container{
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 2em;
+}
+
+.item img{
+    width: 100%;
+}
+
+.item{
+    margin-bottom: 2em;
+    
+}
+
+.item:hover{
+    background-color: #252525;
+    cursor: pointer;
+}
+
+.tank-name{
+    padding: 10px;
+    display: flex;
+    justify-content: center; 
+}
+
+
+.tank-name div img{
+    max-width: 100%;
+}
+
+.tank-name p:nth-child(2){
+    margin: 0 5px;
+}
+
+.uppercase{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #DCDAC5;
+}
