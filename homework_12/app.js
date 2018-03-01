@@ -1,119 +1,126 @@
 let root = document.getElementById("root");
 
-tankPreview(tanks, root);
+createTanksPreview(tanks, root);
 
-window.addEventListener('hashchange', function() {
+window.addEventListener("hashchange", function() {
   if(location.hash === ""){
-      tankPreview(tanks, root);
+      createTanksPreview(tanks, root);
   } else{
-      let name = location.hash;
-      tankDetails2(name.slice(1), tanks);
+      createTankDetails(tanks, location.hash.substring(1));
     }
 });
 
-function tankPreview(arr, parent){    
-    parent.innerHTML = "";
+function createTanksPreview(arr, parentContainer){    
+    removeAllChildren(root);
     
     let thumbnails = createElement("div", "thumbnails");
-    let h1 = createElement("h1", "h1", "Most popular tanks");
-    let div = createElement("div", "flex-container");
+    let h1Element = createElement("h1", "h1", "Most popular tanks");
+    let divContainer = createElement("div", "flex-container");
     
-    thumbnails.appendChild(h1);
-    thumbnails.appendChild(div);
+    thumbnails.appendChild(h1Element);
+    thumbnails.appendChild(divContainer);
 
     for(let i = 0; i < arr.length; i++){
         let item = createElement("a", "item");
         item.setAttribute("title", "Click to details");
         item.addEventListener("click", function(){
-            window.location.hash = arr[i].model;
+            location.hash = arr[i].model;
         });
             
-        let img = createElement("img");
-        img.setAttribute("src", arr[i].preview);
+        let tankImg = createElement("img");
+        tankImg.setAttribute("src", arr[i].preview);
+        tankImg.setAttribute("alt", arr[i].model);
         
         let attributes = createElement("div", "tank-attributes");
-        let container = createElement("div", "country");
+        let imgContainer = createElement("div", "country");
         
         let country = createElement("img");
         country.setAttribute("src", arr[i].country_image);
-        country.setAttribute("title", arr[i].country);
+        country.setAttribute("alt", arr[i].country);
+        country.setAttribute("title", arr[i].country.toUpperCase());
         
         let level = createElement("p");
         level.textContent = arr[i].level;
         
         let model = createElement("p", "tank-name");
         model.textContent = arr[i].model;
-        model.setAttribute("title", arr[i].model);
+        model.setAttribute("title", arr[i].model.toUpperCase());
         
-        container.appendChild(country);
-        attributes.appendChild(container);  
+        imgContainer.appendChild(country);
+        attributes.appendChild(imgContainer);  
         attributes.appendChild(level); 
         attributes.appendChild(model);    
-        item.appendChild(img);
+        item.appendChild(tankImg);
         item.appendChild(attributes);
-        div.appendChild(item);
+        divContainer.appendChild(item);
     }
-    parent.appendChild(thumbnails);   
+    parentContainer.appendChild(thumbnails);   
 }
 
-function tankDetails2(tank, arr){
-    root.innerHTML = "";
+function createTankDetails(arr, tank){
+    removeAllChildren(root);
     
     let tankDetails = createElement("div", "tank-details");
-    let div = createElement("div", "flex-container");
+    let divContainer = createElement("div", "flex-container");
     let item1 = createElement("div", "item1");
     let item2 = createElement("div", "item2");
     let preview = createElement("h2", "h2", "Preview");
     let characteristics = createElement("h2", "h2", "Characteristics");
-    
-    let a = createElement("a", "back", "Back to list view");
-    a.setAttribute("href", "#");
-    a.addEventListener("click", function(){
+    let backLink = createElement("a", "back", "Back to list view");
+    backLink.setAttribute("href", "#");
+    backLink.addEventListener("click", function(){
         location.hash = "";
     });
-
     let attributes = createElement("div", "tank-attributes");
-    let container = createElement("div");
+    let container = createElement("div", "country");
     let country = createElement("img");
     let level = createElement("p");
     let model = createElement("p", "tank-name");
-    let img = createElement("img");
-    let table = createElement("table");
+    let tankImg = createElement("img");
+    let tableElement = createElement("table");
     
     for(let i = 0; i < arr.length; i++){
         if(tank === arr[i].model){
             country.setAttribute("src", arr[i].country_image);
             country.setAttribute("title", arr[i].country); 
+            country.setAttribute("alt", arr[i].country);
             level.textContent = "(level " + arr[i].level + ")";
             model.textContent = arr[i].model;
-            img.setAttribute("src", arr[i].preview);
+            tankImg.setAttribute("src", arr[i].preview);
+            tankImg.setAttribute("alt", arr[i].model);
             
             for(let key in arr[i].details){
-                let tr = createElement("tr");
-                let td1 = createElement("td", "td", key);
-                let td2 = createElement("td", "td", arr[i].details[key]);
+                let trElement = createElement("tr");
+                let tdElement1 = createElement("td", "td", key);
+                let tdElement2 = createElement("td", "td", arr[i].details[key]);
                 
-                tr.appendChild(td1);
-                tr.appendChild(td2);
-                table.appendChild(tr);
+                trElement.appendChild(tdElement1);
+                trElement.appendChild(tdElement2);
+                tableElement.appendChild(trElement);
             }
             
             item1.appendChild(preview);
-            item1.appendChild(img);
+            item1.appendChild(tankImg);
             item2.appendChild(characteristics);
-            item2.appendChild(table);
-            div.appendChild(item1);
-            div.appendChild(item2);
+            item2.appendChild(tableElement);
+            divContainer.appendChild(item1);
+            divContainer.appendChild(item2);
             container.appendChild(country);
             attributes.appendChild(container);  
             attributes.appendChild(model); 
             attributes.appendChild(level); 
             tankDetails.appendChild(attributes);
-            tankDetails.appendChild(div);
-            tankDetails.appendChild(a);
+            tankDetails.appendChild(divContainer);
+            tankDetails.appendChild(backLink);
 
             root.appendChild(tankDetails);
         }
+    }
+}
+
+function removeAllChildren(parentContainer){
+    while(parentContainer.hasChildNodes()) {
+        parentContainer.removeChild(parentContainer.lastChild);
     }
 }
 
