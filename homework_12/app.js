@@ -1,7 +1,15 @@
 let root = document.getElementById("root");
 
 tankPreview(tanks, root);
-window.onhashchange = hashChange;
+
+window.addEventListener('hashchange', function() {
+  if(location.hash === ""){
+      tankPreview(tanks, root);
+  } else{
+      let name = location.hash;
+      tankDetails2(name.slice(1), tanks);
+    }
+});
 
 function tankPreview(arr, parent){    
     parent.innerHTML = "";
@@ -106,15 +114,6 @@ function tankDetails2(tank, arr){
 
             root.appendChild(tankDetails);
         }
-    }
-}
-
-function hashChange(){
-    if(location.hash === ""){
-        tankPreview(tanks, root);
-    } else{
-        let name = location.hash;
-        tankDetails2(name.slice(1), tanks);
     }
 }
 
