@@ -6,17 +6,16 @@ window.addEventListener("hashchange", function() {
       createTanksPreview(tanks, root);
   } else{
       createTankDetails(tanks, location.hash.substring(1));
-    }
+  }
 });
 
 function createTanksPreview(arr, parentContainer){    
     removeAllChildren(root);
     
     let thumbnails = createElement("div", "thumbnails");
-    let h1Element = createElement("h1", "h1", "Most popular tanks");
     let divContainer = createElement("div", "flex-container");
     
-    thumbnails.appendChild(h1Element);
+    thumbnails.appendChild(createElement("h1", "h1", "Most popular tanks"));
     thumbnails.appendChild(divContainer);
 
     for(let i = 0; i < arr.length; i++){
@@ -25,20 +24,18 @@ function createTanksPreview(arr, parentContainer){
         let attributes = createElement("div", "tank-attributes");
         let imgContainer = createElement("div", "country");
         let country = createElement("img");
-        let level = createElement("p", "level");
-        let model = createElement("p", "tank-name");
+        let level = createElement("p", "level", arr[i].level);
+        let model = createElement("p", "tank-name", arr[i].model);
         
-        item.setAttribute("title", "Click to details");
         item.addEventListener("click", function(){
-            location.hash = arr[i].model;
+            location.hash = arr[i].model.replace(/ /g, "-").toLowerCase();
         });
+        item.setAttribute("title", "Click to details");
         tankImg.setAttribute("src", arr[i].preview);
         tankImg.setAttribute("alt", arr[i].model);
         country.setAttribute("src", arr[i].country_image);
         country.setAttribute("alt", arr[i].country);
         country.setAttribute("title", arr[i].country.toUpperCase());
-        level.textContent = arr[i].level;
-        model.textContent = arr[i].model;
         model.setAttribute("title", arr[i].model.toUpperCase());
         
         imgContainer.appendChild(country);
@@ -54,48 +51,41 @@ function createTanksPreview(arr, parentContainer){
 
 function createTankDetails(arr, tank){
     for(let i = 0; i < arr.length; i++){
-        if(tank === arr[i].model){
+        if(tank === arr[i].model.replace(/ /g, "-").toLowerCase()){
             removeAllChildren(root);
             
             let tankDetails = createElement("div", "tank-details");
             let divContainer = createElement("div", "flex-container");
             let item1 = createElement("div", "item");
             let item2 = createElement("div", "item");
-            let preview = createElement("h2", "h2", "Preview");
-            let characteristics = createElement("h2", "h2", "Characteristics");
             let backLink = createElement("a", "back", "Back to list view");
             let attributes = createElement("div", "tank-attributes");
             let container = createElement("div", "country");
             let country = createElement("img");
-            let level = createElement("p", "level");
-            let model = createElement("p", "tank-name");
+            let level = createElement("p", "level", "(level " + arr[i].level + ")");
+            let model = createElement("p", "tank-name", arr[i].model);
             let tankImg = createElement("img");
             let tableElement = createElement("table");
     
-            backLink.setAttribute("href", "#");
             backLink.addEventListener("click", function(){
                 location.hash = "";
             });
+            backLink.setAttribute("href", "#");
             country.setAttribute("src", arr[i].country_image);
             country.setAttribute("title", arr[i].country); 
             country.setAttribute("alt", arr[i].country);
-            level.textContent = "(level " + arr[i].level + ")";
-            model.textContent = arr[i].model;
             tankImg.setAttribute("src", arr[i].preview);
             tankImg.setAttribute("alt", arr[i].model);
             
             for(let key in arr[i].details){
                 let trElement = createElement("tr");
-                let tdElement1 = createElement("td", "td", key);
-                let tdElement2 = createElement("td", "td", arr[i].details[key]);
-                
-                trElement.appendChild(tdElement1);
-                trElement.appendChild(tdElement2);
+                trElement.appendChild(createElement("td", "cell", key));
+                trElement.appendChild(createElement("td", "cell", arr[i].details[key]));
                 tableElement.appendChild(trElement);
             }
-            item1.appendChild(preview);
+            item1.appendChild(createElement("h2", "h2", "Preview"));
             item1.appendChild(tankImg);
-            item2.appendChild(characteristics);
+            item2.appendChild(createElement("h2", "h2", "Characteristic"));
             item2.appendChild(tableElement);
             divContainer.appendChild(item1);
             divContainer.appendChild(item2);
