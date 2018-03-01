@@ -5,12 +5,12 @@ window.addEventListener("hashchange", function() {
   if(location.hash === ""){
       createTanksPreview(tanks, root);
   } else{
-      createTankDetails(tanks, location.hash.substring(1));
+      createTankDetails(tanks, root, location.hash.substring(1));
   }
 });
 
 function createTanksPreview(arr, parentContainer){    
-    removeAllChildren(root);
+    removeAllChildren(parentContainer);
     
     let thumbnails = createElement("div", "thumbnails");
     let divContainer = createElement("div", "flex-container");
@@ -49,10 +49,10 @@ function createTanksPreview(arr, parentContainer){
     parentContainer.appendChild(thumbnails);   
 }
 
-function createTankDetails(arr, tank){
+function createTankDetails(arr, parentContainer, tank){
     for(let i = 0; i < arr.length; i++){
         if(tank === arr[i].model.replace(/ /g, "-").toLowerCase()){
-            removeAllChildren(root);
+            removeAllChildren(parentContainer);
             
             let tankDetails = createElement("div", "tank-details");
             let divContainer = createElement("div", "flex-container");
@@ -97,7 +97,7 @@ function createTankDetails(arr, tank){
             tankDetails.appendChild(divContainer);
             tankDetails.appendChild(backLink);
 
-            root.appendChild(tankDetails);
+            parentContainer.appendChild(tankDetails);
         }
     }
 }
