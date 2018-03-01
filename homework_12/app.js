@@ -72,7 +72,7 @@ function createTankDetails(arr, parentContainer, tank){
             });
             backLink.setAttribute("href", "#");
             country.setAttribute("src", arr[i].country_image);
-            country.setAttribute("title", arr[i].country); 
+            country.setAttribute("title", arr[i].country.toUpperCase()); 
             country.setAttribute("alt", arr[i].country);
             tankImg.setAttribute("src", arr[i].preview);
             tankImg.setAttribute("alt", arr[i].model);
