@@ -21,7 +21,7 @@ function createTanksPreview(arr, parentContainer){
     thumbnails.appendChild(divContainer);
 
     for(let i = 0; i < arr.length; i++){
-        let item = createElement("a", "item");
+        let item = createElement("div", "item");
         item.setAttribute("title", "Click to details");
         item.addEventListener("click", function(){
             location.hash = arr[i].model;
@@ -39,7 +39,7 @@ function createTanksPreview(arr, parentContainer){
         country.setAttribute("alt", arr[i].country);
         country.setAttribute("title", arr[i].country.toUpperCase());
         
-        let level = createElement("p");
+        let level = createElement("p", "level");
         level.textContent = arr[i].level;
         
         let model = createElement("p", "tank-name");
@@ -62,8 +62,8 @@ function createTankDetails(arr, tank){
     
     let tankDetails = createElement("div", "tank-details");
     let divContainer = createElement("div", "flex-container");
-    let item1 = createElement("div", "item1");
-    let item2 = createElement("div", "item2");
+    let item1 = createElement("div", "item");
+    let item2 = createElement("div", "item");
     let preview = createElement("h2", "h2", "Preview");
     let characteristics = createElement("h2", "h2", "Characteristics");
     let backLink = createElement("a", "back", "Back to list view");
@@ -74,7 +74,7 @@ function createTankDetails(arr, tank){
     let attributes = createElement("div", "tank-attributes");
     let container = createElement("div", "country");
     let country = createElement("img");
-    let level = createElement("p");
+    let level = createElement("p", "level");
     let model = createElement("p", "tank-name");
     let tankImg = createElement("img");
     let tableElement = createElement("table");
