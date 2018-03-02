@@ -29,17 +29,21 @@ body{
     display: flex;
     justify-content: center; 
     align-items: baseline;
-}
-
-.thumbnails .item > img{
-    height: 170px;
+    flex-basis: 15%;
 }
 
 .thumbnails .item{
+    align-self: baseline;
     padding: 15px;
-    flex-basis: 200px;
-    margin-bottom: 2em;
+    flex-basis: 13%;
+    margin-bottom: 1em;
     transition: 0.4s;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.thumbnails .item > img{
+    max-width: 100%;
 }
 
 .thumbnails .item:hover{
@@ -48,18 +52,19 @@ body{
 }
 
 .thumbnails .country img{
-    width: 75%;
+    height: 13px;
 }
 
 .tank-attributes p:nth-child(2){
-    margin-right: 6px;
+    margin: 0 6px;
 }
 
 .thumbnails p.tank-name{
     color: #DCDAC5;
 }
 
-p.tank-name{
+.tank-attributes p.tank-name{
+    font-size: 0.9em;
     text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
@@ -71,7 +76,7 @@ p.level, p.tank-name{
 }
 
 p.level{
-    font-size: 1.25em;
+    font-size: 1em;
 }
 
 .tank-details .item{
