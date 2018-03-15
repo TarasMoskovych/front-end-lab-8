@@ -1,0 +1,75 @@
+@import "variables";
+
+hr{
+  background-color: @blue;
+}
+
+.font-blue{
+  color: @blue;
+}
+
+.navbar{
+  border-bottom: 1px solid @light-grey;
+  .navbar-toggler{
+    &:hover{
+      background-color: @hover-grey;
+    }
+    &:focus{
+      outline: none;
+    }
+    &:active{
+      border: none;
+    }
+  }
+  .navbar-nav{
+    .nav-item{
+      .nav-link{
+        transition: 0.4s;
+        color: @grey;
+        &:hover{
+          background-color: @blue;
+          color: @white;
+        }
+      }
+      .active{
+        color: @white;
+        background-color: @blue;
+        &:hover{
+          color: @white;
+        }
+      }
+    }
+  }
+}
+
+main{
+  .item{
+    p{
+      font-size: 0.792em;
+      text-align: center;
+      color: @white;
+    }
+  }
+  .item-red{
+    background-color: @red;
+  }
+  .item-blue{
+    background-color: @blue;
+  }
+  .item-orange{
+    background-color: @orange;
+  }
+  .item-green{
+    background-color: @green;
+  }
+  .description-text{
+    font-size: 0.95em;
+  }
+}
+
+footer{
+   p{
+     color: @white;
+     background-color: @grey;
+   }
+ }
