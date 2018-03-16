@@ -100,12 +100,14 @@ html[xmlns] .slides {display: block;}
 	display: block;
 	cursor: pointer; 
 	text-indent: -9999px;
-	background: url(../images/dot.png) no-repeat 0 0;
+	background-color: #333;
+	border-radius: 50%;
 }
 .flex-control-paging li a:hover {
-	background: url(../images/dot-hover.png) no-repeat 0 0;
+	background-color: #999;
+	border-radius: 50%;
 }
-.flex-control-paging li a.flex-active { 
-	background: url(../images/dot-active.png) no-repeat 0 0;
-	cursor: default;
+.flex-control-paging li a.flex-active {
+	background-color: #978611;
+	border-radius: 50%;
 }
