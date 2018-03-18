@@ -1,18 +1,21 @@
 @import "variables";
 
-hr{
-  background-color: @blue;
-}
-
-.font-blue{
-  color: @blue;
+body{
+  font-family: @font-family;
+  font-size: @font-size;
+  .h1, .h4{
+    color: @blue;
+  }
+  hr{
+    background-color: @blue;
+  }
 }
 
 .navbar{
-  border-bottom: 1px solid @light-grey;
+  border-bottom: 1px solid @lighten-grey;
   .navbar-toggler{
     &:hover{
-      background-color: @hover-grey;
+      background-color: @lighten-grey;
     }
     &:focus{
       outline: none;
@@ -26,16 +29,13 @@ hr{
       .nav-link{
         transition: 0.4s;
         color: @grey;
-        &:hover{
+        &:not(.active):hover{
           background-color: @blue;
           color: @white;
         }
-      }
-      .active{
-        color: @white;
-        background-color: @blue;
-        &:hover{
+        &.active{
           color: @white;
+          background-color: @blue;
         }
       }
     }
@@ -45,8 +45,6 @@ hr{
 main{
   .item{
     p{
-      font-size: 0.792em;
-      text-align: center;
       color: @white;
     }
   }
@@ -62,9 +60,7 @@ main{
   .item-green{
     background-color: @green;
   }
-  .description-text{
-    font-size: 0.95em;
-  }
+
 }
 
 footer{
