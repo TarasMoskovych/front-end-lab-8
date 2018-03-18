@@ -70,23 +70,23 @@ html[xmlns] .slides {display: block;}
 }
 .flex-direction-nav .flex-prev {
 	left: 10px;
-	background: url(../images/arrow.png) no-repeat -10px -10px;
+	background: url(../images/arrows.png) no-repeat -10px -10px;
 }
 .flex-direction-nav .flex-next { 
 	right: 10px;
-	background: url(../images/arrow.png) no-repeat -85px -10px;
+	background: url(../images/arrows.png) no-repeat -85px -10px;
 }
 .flexslider .flex-prev:hover {
-	background: url(../images/arrow.png) no-repeat -160px -10px;
+	background: url(../images/arrows.png) no-repeat -160px -10px;
 }
 .flexslider .flex-next:hover {
-	background: url(../images/arrow.png) no-repeat -160px -85px;
+	background: url(../images/arrows.png) no-repeat -160px -85px;
 }
 .flexslider .flex-prev:active {
-	background: url(../images/arrow.png) no-repeat -10px -85px;
+	background: url(../images/arrows.png) no-repeat -10px -85px;
 }
 .flexslider .flex-next:active {
-	background: url(../images/arrow.png) no-repeat -85px -85px;
+	background: url(../images/arrows.png) no-repeat -85px -85px;
 }
 .flex-direction-nav .flex-disabled { opacity: 0!important; filter:alpha(opacity=0); cursor: default; }
 
