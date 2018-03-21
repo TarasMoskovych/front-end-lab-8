@@ -37,7 +37,16 @@ function Company(company) {
             console.log("Employee with id = " + id + " does not exist!")
         }
     };
-    
+
+    this.getAverageSalary = function () {
+        let averageSalary = 0;
+        _employees.forEach(function (employee) {
+            averageSalary += employee.getSalary();
+        });
+        // return averageSalary / _employees.length;
+        console.log(averageSalary / _employees.length);
+    };
+
     this.getEmployees = function () {
         let employeesArray = [];
         _employees.forEach(function (employee) {
@@ -65,7 +74,7 @@ function Employee(employee) {
     };
 
     this.getSalary = function () {
-        console.log(_salary);
+        // console.log(_salary);
         return _salary;
     };
 
@@ -99,9 +108,8 @@ epam.getEmployees();
 epam.getEmployees();
 
 anton.getProperties();
-anton.setSalary(501);
-anton.getSalary();
 
+epam.getAverageSalary()
 
 
 
