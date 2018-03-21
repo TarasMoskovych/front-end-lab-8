@@ -1,23 +1,25 @@
-function Company(name, owner, maxCount) {
-    let _name = name;
-    let _owner = owner;
-    let _maxCount = maxCount;
+function Company(company) {
+    let _name = company.name;
+    let _owner = company.owner;
+    let _maxCount = _checkForPositive(company.maxCompanySize) ? company.maxCompanySize : 3;
+    let _employees = [];
 
-    let _employees = 0;
-    let _maxCompanySize = 5;
-
-    function checkFreePlace() {
-        return _employees.length <= _maxCompanySize;
+    function _checkForPositive(value) {
+        return value > 0;
     }
-    
+
+    function _checkFreePlace() {
+        return _employees.length < _maxCount;
+    }
+
     this.addNewEmployee = function (employee) {
-        if(checkFreePlace()){
+        if(_checkFreePlace()){
             _employees.push(employee);
         } else {
             let min = _employees[0].getSalary();
             let index = 0;
             for (let i = 0; i < _employees.length; i++){
-                if (min < _employees[i].getSalary()){
+                if (min > _employees[i].getSalary()){
                     index = i;
                     min = _employees[i].getSalary();
                 }
@@ -29,19 +31,38 @@ function Company(name, owner, maxCount) {
     };
 
     this.removeEmployee = function (id) {
-        _employees.splice(_employees.indexOf(id), 1);
+        if(id < _employees.length && id >= 0){
+            _employees.splice(id, 1);
+        } else {
+            console.log("Employee with id = " + id + " does not exist!")
+        }
+    };
+    
+    this.getEmployees = function () {
+        let employeesArray = [];
+        _employees.forEach(function (employee) {
+            employeesArray.push(employee.getProperties());
+            employee.getProperties();
+        });
+        // return employeesArray;
+        console.log(employeesArray);
+        console.log();
     }
 }
 
-function Employee(name, age, salary, primarySkill) {
-    let _name = name;
-    let _primarySkill = primarySkill;
-    let _age = age;
-    let _salary = salary;
+function Employee(employee) {
+    let _name = employee.name;
+    let _primarySkill = employee.primarySkill;
+    let _age = employee.age;
+    let _salary = employee.salary;
 
-    function checkSalary(amount) {
+    function _checkSalary(amount) {
         return amount > _salary;
     }
+
+    this.getProperties = function() {
+        return {name: _name, age: _age, salary: _salary, primarySkill: _primarySkill};
+    };
 
     this.getSalary = function () {
         console.log(_salary);
@@ -49,13 +70,15 @@ function Employee(name, age, salary, primarySkill) {
     };
 
     this.setSalary = function (amount) {
-        if(checkSalary(amount)){
+        if(_checkSalary(amount)){
             _salary = amount;
+        } else {
+            console.log("You cannot set smaller salary than employee has now!");
         }
     };
 }
 
-// let artem = new Employee("Artem", 15, 1000, "UX");
+
 let artem = new Employee({name: "Artem", age: 15, salary: 1000, primarySkill: "UX"});
 let vova = new Employee({name: "Vova", age: 16, salary: 2000, primarySkill: "BE"});
 let vasyl = new Employee({name: "Vasyl", age: 25, salary: 1000, primarySkill: "FE"});
@@ -63,13 +86,22 @@ let ivan = new Employee({name: "Ivan", age: 35, salary: 5000, primarySkill: "FE"
 let orest = new Employee({name: "Orest", age: 29, salary: 300, primarySkill: "AT"});
 let anton = new Employee({name: "Anton", age: 19, salary: 500, primarySkill: "Manager"});
 
-artem.getSalary();
+let epam = new Company({name: "Epam", owner: "Arkadii", maxCompanySize: 5});
+epam.addNewEmployee(artem);
+epam.addNewEmployee(vova);
+epam.addNewEmployee(vasyl);
+epam.addNewEmployee(ivan);
+epam.addNewEmployee(orest);
+epam.addNewEmployee(anton);
 
-// let epam = new Company({name: "Epam", owner: "Arkadii", maxCompanySize: 5});
-// epam.addNewEmployee(artem);
-// epam.addNewEmployee(vova);
-// epam.addNewEmployee(vasyl);
-// epam.addNewEmployee(ivan);
-// epam.addNewEmployee(orest);
-// epam.addNewEmployee(anton);
+epam.getEmployees();
+// epam.removeEmployee(0);
+epam.getEmployees();
+
+anton.getProperties();
+anton.setSalary(501);
+anton.getSalary();
+
+
+
 
