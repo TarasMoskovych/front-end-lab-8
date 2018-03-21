@@ -12,22 +12,29 @@ function Company(company) {
         return _employees.length < _maxCount;
     }
 
-    this.addNewEmployee = function (employee) {
-        if(_checkFreePlace()){
-            _employees.push(employee);
-        } else {
-            let min = _employees[0].getSalary();
-            let index = 0;
-            for (let i = 0; i < _employees.length; i++){
-                if (min > _employees[i].getSalary()){
-                    index = i;
-                    min = _employees[i].getSalary();
-                }
+    function _returnIndexOfSmallestSalary() {
+        let min = _employees[0].getSalary();
+        let index = 0;
+        for (let i = 0; i < _employees.length; i++){
+            if (min > _employees[i].getSalary()){
+                index = i;
+                min = _employees[i].getSalary();
             }
-            this.removeEmployee(index);
-            _employees.push(employee);
         }
-        
+        return index;
+    }
+
+    this.addNewEmployee = function (employee) {
+        if(employee instanceof Employee){
+            if(_checkFreePlace()){
+                _employees.push(employee);
+            } else {
+                this.removeEmployee(_returnIndexOfSmallestSalary());
+                _employees.push(employee);
+            }
+        } else {
+            console.log("Please try to add Employee instance!");
+        }
     };
 
     this.removeEmployee = function (id) {
@@ -115,14 +122,14 @@ epam.addNewEmployee(ivan);
 epam.addNewEmployee(orest);
 epam.addNewEmployee(anton);
 
-epam.getEmployees();
+// epam.getEmployees();
 // epam.removeEmployee(0);
 epam.getEmployees();
-
-anton.getProperties();
-
-epam.getAverageSalary();
-epam.getAverageAge();
+//
+// anton.getProperties();
+//
+// epam.getAverageSalary();
+// epam.getAverageAge();
 
 
 
