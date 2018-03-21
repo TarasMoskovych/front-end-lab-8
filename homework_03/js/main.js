@@ -51,11 +51,19 @@ function Company(company) {
         let employeesArray = [];
         _employees.forEach(function (employee) {
             employeesArray.push(employee.getProperties());
-            employee.getProperties();
         });
         // return employeesArray;
         console.log(employeesArray);
         console.log();
+    };
+
+    this.getAverageAge = function () {
+        let averageAge = 0;
+        _employees.forEach(function (employee) {
+            averageAge += employee.getAge();
+        });
+        // return averageSalary / _employees.length;
+        console.log(averageAge / _employees.length);
     }
 }
 
@@ -71,6 +79,10 @@ function Employee(employee) {
 
     this.getProperties = function() {
         return {name: _name, age: _age, salary: _salary, primarySkill: _primarySkill};
+    };
+
+    this.getAge = function () {
+        return _age;
     };
 
     this.getSalary = function () {
@@ -109,7 +121,8 @@ epam.getEmployees();
 
 anton.getProperties();
 
-epam.getAverageSalary()
+epam.getAverageSalary();
+epam.getAverageAge();
 
 
 
