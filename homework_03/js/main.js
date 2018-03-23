@@ -1,7 +1,7 @@
-function Company(company) {
-    let _name = company.name;
-    let _owner = company.owner;
-    let _maxCount = _checkForPositive(company.maxCompanySize) ? company.maxCompanySize : 3;
+function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
+    let _name = name;
+    let _owner = owner;
+    let _maxCount = _checkForPositive(maxCompanySize) ? maxCompanySize : 3;
     let _employees = [];
     let _logs = '';
 
@@ -93,11 +93,11 @@ function Company(company) {
     }
 }
 
-function Employee(employee) {
-    let _name = employee.name;
-    let _primarySkill = employee.primarySkill;
-    let _age = employee.age;
-    let _salary = employee.salary;
+function Employee({name: name, age: age, salary: salary, primarySkill: primarySkill}) {
+    let _name = name;
+    let _primarySkill = primarySkill;
+    let _age = age;
+    let _salary = salary;
     let _companyName;
     let _logs = '';
     let _time = [];
@@ -126,7 +126,7 @@ function Employee(employee) {
     this.getWorkTimeAtCompany = function (name) {
         let tmp = _findCompanyName(name);
         if (tmp === undefined) {
-            return `${name} company does not exist!`;
+            return `Company does not exist!`;
         } else {
             if (tmp.timeWhenFired) {
                 return (tmp.timeWhenFired - tmp.timeWhenHired) / 1000;
@@ -194,3 +194,13 @@ let orest = new Employee({name: "Orest", age: 29, salary: 300, primarySkill: "AT
 let anton = new Employee({name: "Anton", age: 19, salary: 500, primarySkill: "Manager"});
 
 let epam = new Company({name: "Epam", owner: "Arkadii", maxCompanySize: 5});
+epam.addNewEmployee(artem);
+epam.addNewEmployee(vova);
+epam.addNewEmployee(vasyl);
+epam.addNewEmployee(ivan);
+epam.addNewEmployee(orest);
+
+setTimeout(() => {
+    epam.removeEmployee(0);
+    console.log(artem.getWorkTimeInSeconds()); // -> 5.5744444444444445
+}, 5000);
