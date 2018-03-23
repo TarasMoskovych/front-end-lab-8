@@ -3,9 +3,7 @@ function Company(company) {
     let _owner = company.owner;
     let _maxCount = _checkForPositive(company.maxCompanySize) ? company.maxCompanySize : 3;
     let _employees = [];
-    let _logs = "";
-    let _timeWhenHired;
-    let _timeWhenFired = null;
+    let _logs = '';
 
     (function _createCompanyLog() {
         _logs += `${_name} was created in ${Date()}`;
@@ -30,27 +28,14 @@ function Company(company) {
         }
         return index;
     }
-    
-    function calculateWorkingTimeInCompany() {
-        if(_timeWhenFired === null){
-            let date = new Date();
-            return calculateSubtractionInSeconds(date);
-        }
-        return calculateSubtractionInSeconds(_timeWhenFired);
-    }
-
-    function calculateSubtractionInSeconds(value) {
-        return value.getSeconds() - _timeWhenHired.getSeconds();
-    }
 
     this.addNewEmployee = function (employee) {
         if(employee instanceof Employee){
             if(_checkFreePlace()){
                 let date = new Date();
                 _employees.push(employee);
-                employee.hire(_name);
+                employee.hire(_name, date);
                 _logs += `\n${employee.getName()} starts working at ${_name} in ${date}`;
-                _timeWhenHired = date;
             } else {
                 this.removeEmployee(_returnIndexOfSmallestSalary());
                 _employees.push(employee);
@@ -63,10 +48,9 @@ function Company(company) {
     this.removeEmployee = function (id) {
         if(id < _employees.length && id >= 0){
             let date = new Date();
-            _employees[id].fire();
+            _employees[id].fire(_name, date);
             _logs += `\n_${_employees[id].getName()} ends working at ${_name} in ${date}`;
             _employees.splice(id, 1);
-            _timeWhenFired = date;
         } else {
             console.log(`Employee with id = ${id} does not exist!`);
         }
@@ -89,11 +73,11 @@ function Company(company) {
     };
 
     this.getFormattedListOfEmployees = function () {
-        let employeesList = ``;
+        let employeesString = '';
         _employees.forEach(function (employee) {
-            employeesList += `${employee.getName()} - works in ${_name} ${calculateWorkingTimeInCompany()} seconds\n`;
+            employeesString += `${employee.getName()} - works in ${_name} ${employee.getWorkTimeAtCompany(_name)} seconds\n`;
         });
-        return employeesList;
+        return employeesString;
     };
 
     this.getAverageAge = function () {
@@ -115,19 +99,41 @@ function Employee(employee) {
     let _age = employee.age;
     let _salary = employee.salary;
     let _companyName;
-    let _logs = "";
+    let _logs = '';
+    let _time = [];
+    let _totalTime = 0;
 
     function _hiredToCompanyLog() {
-        _logs = `${_name} is hired to ${_companyName} in ${Date()}`;
+        _logs += `${_name} is hired to ${_companyName} in ${Date()}`;
     }
 
     function _firedFromCompanyLog() {
-        _logs = `${_name} is fired from ${_companyName} in ${Date()}`;
+        _logs += `${_name} is fired from ${_companyName} in ${Date()}`;
     }
 
     function _checkSalary(amount) {
         return amount > _salary;
     }
+
+    function _findCompanyName(name) {
+        for(let i = 0; i < _time.length; i++){
+            if(_time[i].companyName === name){
+                return _time[i];
+            }
+        }
+    }
+
+    this.getWorkTimeAtCompany = function (name) {
+        let tmp = _findCompanyName(name);
+        if (tmp === undefined) {
+            return `${name} company does not exist!`;
+        } else {
+            if (tmp.timeWhenFired) {
+                return (tmp.timeWhenFired - tmp.timeWhenHired) / 1000;
+            }
+            return (new Date() - tmp.timeWhenHired) / 1000;
+        }
+    };
 
     this.getEmployee = function() {
         return {name: _name, age: _age, salary: _salary, primarySkill: _primarySkill};
@@ -155,22 +161,27 @@ function Employee(employee) {
         }
     };
 
-    this.getWorkTimeInSeconds = function () {
-
-    };
-
-    this.hire = function (name) {
+    this.hire = function (name, date) {
+        _time.push({'companyName': name, 'timeWhenHired': date});
         _companyName = name;
         _hiredToCompanyLog();
     };
     
-    this.fire = function () {
+    this.fire = function (name, date) {
         _firedFromCompanyLog();
-        _companyName = ``;
+        _companyName = '';
+        _findCompanyName(name)['timeWhenFired'] = date;
     };
 
     this.getHistory = function () {
         return _logs;
+    };
+
+    this.getWorkTimeInSeconds = function () {
+        for(let i = 0; i < _time.length; i++){
+            _totalTime += this.getWorkTimeAtCompany(_time[i].companyName);
+        }
+        return _totalTime;
     }
 }
 
@@ -183,38 +194,3 @@ let orest = new Employee({name: "Orest", age: 29, salary: 300, primarySkill: "AT
 let anton = new Employee({name: "Anton", age: 19, salary: 500, primarySkill: "Manager"});
 
 let epam = new Company({name: "Epam", owner: "Arkadii", maxCompanySize: 5});
-epam.addNewEmployee(artem);
-epam.addNewEmployee(vova);
-// epam.removeEmployee(0);
-// epam.addNewEmployee(vasyl);
-// epam.addNewEmployee(ivan);
-// epam.addNewEmployee(orest);
-// epam.addNewEmployee(anton);
-
-// epam.getEmployees();
-// epam.removeEmployee(0);
-epam.getEmployees();
-//
-// anton.getProperties();
-//
-// epam.getAverageSalary();
-console.log(epam.getAverageAge());
-console.log(epam.getHistory());
-
-setTimeout(() => {
-    // console.log(epam.getFormattedListOfEmployees());
-    epam.removeEmployee(0);
-}, 5000);
-
-epam.getEmployees();
-// console.log(artem.getHistory());
-// epam.removeEmployee(0);
-//
-// console.log(artem.getHistory());
-// artem.setSalary(200);
-// artem.setSalary(400);
-// artem.setSalary(4000);
-//
-// console.log(artem.getHistory());
-// console.log(artem.getHistory());
-console.log(epam.getFormattedListOfEmployees());
