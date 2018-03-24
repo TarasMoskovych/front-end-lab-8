@@ -1,21 +1,13 @@
 function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
     let _name = name;
     let _owner = owner;
-    let _maxCount = _checkForPositive(maxCompanySize) ? maxCompanySize : 3;
+    let _maxCount = (maxCompanySize > 0) ? maxCompanySize : 3;
     let _employees = [];
     let _logs = '';
 
     (function _createCompanyLog() {
         _logs += `${_name} was created in ${Date()}`;
     })();
-
-    function _checkForPositive(value) {
-        return value > 0;
-    }
-
-    function _checkFreePlace() {
-        return _employees.length < _maxCount;
-    }
 
     function _returnIndexOfSmallestSalary() {
         let min = _employees[0].getSalary();
@@ -31,15 +23,13 @@ function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
 
     this.addNewEmployee = function (employee) {
         if(employee instanceof Employee){
-            if(_checkFreePlace()){
-                let date = new Date();
-                _employees.push(employee);
-                employee.hire(_name, date);
-                _logs += `\n${employee.getName()} starts working at ${_name} in ${date}`;
-            } else {
+            if(_employees.length === _maxCount){
                 this.removeEmployee(_returnIndexOfSmallestSalary());
-                _employees.push(employee);
             }
+            let date = new Date();
+            _employees.push(employee);
+            employee.hire(_name, date);
+            _logs += `\n${employee.getName()} starts working at ${_name} in ${date}`;
         } else {
             console.log(`Please try to add Employee instance!`);
         }
@@ -49,7 +39,7 @@ function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
         if(id < _employees.length && id >= 0){
             let date = new Date();
             _employees[id].fire(_name, date);
-            _logs += `\n_${_employees[id].getName()} ends working at ${_name} in ${date}`;
+            _logs += `\n${_employees[id].getName()} ends working at ${_name} in ${date}`;
             _employees.splice(id, 1);
         } else {
             console.log(`Employee with id = ${id} does not exist!`);
@@ -185,7 +175,6 @@ function Employee({name: name, age: age, salary: salary, primarySkill: primarySk
     }
 }
 
-
 let artem = new Employee({name: "Artem", age: 15, salary: 1000, primarySkill: "UX"});
 let vova = new Employee({name: "Vova", age: 16, salary: 2000, primarySkill: "BE"});
 let vasyl = new Employee({name: "Vasyl", age: 25, salary: 1000, primarySkill: "FE"});
@@ -199,8 +188,7 @@ epam.addNewEmployee(vova);
 epam.addNewEmployee(vasyl);
 epam.addNewEmployee(ivan);
 epam.addNewEmployee(orest);
+epam.addNewEmployee(anton);
 
-setTimeout(() => {
-    epam.removeEmployee(0);
-    console.log(artem.getWorkTimeInSeconds()); // -> 5.5744444444444445
-}, 5000);
+console.log(epam.getHistory());
+console.log(epam.getEmployees());
