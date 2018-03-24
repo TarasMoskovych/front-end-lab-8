@@ -36,13 +36,13 @@ function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
     };
 
     this.removeEmployee = function (id) {
-        if(id < _employees.length && id >= 0){
+        if(!isNaN(id) && id < _employees.length && id >= 0){
             let date = new Date();
             _employees[id].fire(_name, date);
             _logs += `\n${_employees[id].getName()} ends working at ${_name} in ${date}`;
             _employees.splice(id, 1);
         } else {
-            console.log(`Employee with id = ${id} does not exist!`);
+            console.log(`Employee with id='${id}' does not exist!`);
         }
     };
 
@@ -65,7 +65,8 @@ function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
     this.getFormattedListOfEmployees = function () {
         let employeesString = '';
         _employees.forEach(function (employee) {
-            employeesString += `${employee.getName()} - works in ${_name} ${employee.getWorkTimeAtCompany(_name)} seconds\n`;
+            employeesString += `${employee.getName()} - works in ${_name} ` +
+                               `${employee.getWorkTimeAtCompany(_name)} seconds\n`;
         });
         return employeesString;
     };
@@ -93,12 +94,12 @@ function Employee({name: name, age: age, salary: salary, primarySkill: primarySk
     let _time = [];
     let _totalTime = 0;
 
-    function _hiredToCompanyLog() {
-        _logs += `${_name} is hired to ${_companyName} in ${Date()}`;
+    function _hiredToCompanyLog(name) {
+        _logs += `${_name} is hired to ${name} in ${Date()}\n`;
     }
 
-    function _firedFromCompanyLog() {
-        _logs += `${_name} is fired from ${_companyName} in ${Date()}`;
+    function _firedFromCompanyLog(name) {
+        _logs += `${_name} is fired from ${name} in ${Date()}\n`;
     }
 
     function _checkSalary(amount) {
@@ -107,7 +108,7 @@ function Employee({name: name, age: age, salary: salary, primarySkill: primarySk
 
     function _findCompanyName(name) {
         for(let i = 0; i < _time.length; i++){
-            if(_time[i].companyName === name){
+            if(_time[i].companyName.toLocaleLowerCase() === name.toLowerCase()){
                 return _time[i];
             }
         }
@@ -143,22 +144,22 @@ function Employee({name: name, age: age, salary: salary, primarySkill: primarySk
 
     this.setSalary = function (amount) {
         if(_checkSalary(amount)){
-            _logs += `\nchange salary from ${_salary} to ${amount}`;
+            _logs += `change salary from ${_salary} to ${amount}\n`;
             _salary = amount;
-        } else {
-            _logs += `\ntry to change salary from ${_salary} to ${amount}`;
-            console.log(`You cannot set smaller salary than employee has now!`);
+        } else if (!isNaN(amount)){
+            _logs += `try to change salary from ${_salary} to ${amount}\n`;
+            console.log(`You cannot set smaller salary than ${_name} has now!`);
         }
     };
 
     this.hire = function (name, date) {
         _time.push({'companyName': name, 'timeWhenHired': date});
         _companyName = name;
-        _hiredToCompanyLog();
+        _hiredToCompanyLog(name);
     };
     
     this.fire = function (name, date) {
-        _firedFromCompanyLog();
+        _firedFromCompanyLog(name);
         _companyName = '';
         _findCompanyName(name)['timeWhenFired'] = date;
     };
@@ -175,14 +176,15 @@ function Employee({name: name, age: age, salary: salary, primarySkill: primarySk
     }
 }
 
-let artem = new Employee({name: "Artem", age: 15, salary: 1000, primarySkill: "UX"});
-let vova = new Employee({name: "Vova", age: 16, salary: 2000, primarySkill: "BE"});
-let vasyl = new Employee({name: "Vasyl", age: 25, salary: 1000, primarySkill: "FE"});
-let ivan = new Employee({name: "Ivan", age: 35, salary: 5000, primarySkill: "FE"});
-let orest = new Employee({name: "Orest", age: 29, salary: 300, primarySkill: "AT"});
-let anton = new Employee({name: "Anton", age: 19, salary: 500, primarySkill: "Manager"});
 
-let epam = new Company({name: "Epam", owner: "Arkadii", maxCompanySize: 5});
+let artem = new Employee({name: 'Artem', age: 15, salary: 1000, primarySkill: 'UX'});
+let vova = new Employee({name: 'Vova', age: 16, salary: 2000, primarySkill: 'BE'});
+let vasyl = new Employee({name: 'Vasyl', age: 25, salary: 1000, primarySkill: 'FE'});
+let ivan = new Employee({name: 'Ivan', age: 35, salary: 5000, primarySkill: 'FE'});
+let orest = new Employee({name: 'Orest', age: 29, salary: 300, primarySkill: 'AT'});
+let anton = new Employee({name: 'Anton', age: 19, salary: 500, primarySkill: 'Manager'});
+
+let epam = new Company({name: 'Epam', owner: 'Arkadii', maxCompanySize: 5});
 epam.addNewEmployee(artem);
 epam.addNewEmployee(vova);
 epam.addNewEmployee(vasyl);
@@ -190,5 +192,54 @@ epam.addNewEmployee(ivan);
 epam.addNewEmployee(orest);
 epam.addNewEmployee(anton);
 
+console.log(`> 1. epam.getHistory()`);
 console.log(epam.getHistory());
+
+console.log(`\n> 2. epam.getEmployees()`);
 console.log(epam.getEmployees());
+
+console.log(`\n> 3. epam.removeEmployee(2), vasyl.getHistory()`);
+epam.removeEmployee('h');
+epam.removeEmployee(2); //remove Vasyl
+console.log(vasyl.getHistory());
+
+console.log(`\n> 4. epam.getAverageSalary()`);
+console.log(epam.getAverageSalary());
+
+console.log(`\n> 5. epam.getAverageAge()`);
+console.log(epam.getAverageAge());
+
+console.log(`\n> 6. epam.addNewEmployee(5,6,9,5)`); //trying to add NOT Employee instance
+epam.addNewEmployee(5,6,9,5);
+
+setTimeout(() => {
+    console.log(`\n> 9. epam.removeEmployee(0), artem.getWorkTimeInSeconds() `);
+    epam.removeEmployee(0); //remove Artem
+    console.log(artem.getWorkTimeInSeconds());
+    console.log(artem.getHistory());
+}, 5000);
+
+console.log(`\n> 7. vova.setSalary()`);
+vova.setSalary(900); // set wrong salary
+vova.setSalary('salary'); //ignore
+vova.setSalary(2500);
+console.log(vova.getHistory());
+
+console.log(`\n> 8. vova.getSalary()`);
+console.log(vova.getSalary());
+
+let someCompany = new Company({name: 'SomeCompany', owner: 'Owner', maxCompanySize:4});
+someCompany.addNewEmployee(ivan);
+setTimeout(() => {
+    console.log(`\n> 10. ivan.getWorkTimeInSeconds()`);
+    epam.removeEmployee(2); //remove Ivan from Epam
+    console.log(ivan.getWorkTimeAtCompany(`Epam`));
+    console.log(ivan.getWorkTimeAtCompany(`someCOMPANY`)); //ignore case
+    console.log(ivan.getWorkTimeAtCompany(`WrongCompany`));
+    console.log(ivan.getWorkTimeInSeconds()); //total time
+}, 5000);
+
+setTimeout(() => {
+    console.log(`\n> 11. epam.getFormattedListOfEmployees()`);
+    console.log(epam.getFormattedListOfEmployees());
+}, 5000);
