@@ -1,4 +1,4 @@
-function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
+function Company({name, owner, maxCompanySize}) {
     let _name = name;
     let _owner = owner;
     let _maxCount = (maxCompanySize > 0) ? maxCompanySize : 3;
@@ -9,7 +9,7 @@ function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
         _logs += `${_name} was created in ${Date()}`;
     })();
 
-    function _returnIndexOfSmallestSalary() {
+    function _findEmployeeWithSmallestSalary() {
         let min = _employees[0].getSalary();
         let index = 0;
         for (let i = 0; i < _employees.length; i++){
@@ -24,7 +24,7 @@ function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
     this.addNewEmployee = function (employee) {
         if(employee instanceof Employee){
             if(_employees.length === _maxCount){
-                this.removeEmployee(_returnIndexOfSmallestSalary());
+                this.removeEmployee(_findEmployeeWithSmallestSalary());
             }
             let date = new Date();
             _employees.push(employee);
@@ -84,7 +84,7 @@ function Company({name: name, owner: owner, maxCompanySize: maxCompanySize}) {
     }
 }
 
-function Employee({name: name, age: age, salary: salary, primarySkill: primarySkill}) {
+function Employee({name, age, salary, primarySkill}) {
     let _name = name;
     let _primarySkill = primarySkill;
     let _age = age;
