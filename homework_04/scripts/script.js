@@ -19,8 +19,8 @@ function assign() {
 
 let defaults = {width: 100, height: 100};
 let options = {width: 150};
-let configs = assign({}, defaults, options); // -> {width: 150, height: 100}
-console.log(configs);
+let configs = assign({}, defaults, options);
+//console.log(configs);
 
 
 // Task 2
@@ -68,12 +68,13 @@ Fighter.prototype.fight = function (figter) {
             if(figter.getIsBlocked()){
                 figter.setIsBlocked(false);
             } else {
-                figter.setHitpoints(figter.getHitpoints() - attack);
-                if(figter.getHitpoints() < 0){
-                    figter.setHitpoints(0);
-                }
+                _reduceHitpoints();
             }
         } else {
+            _reduceHitpoints();
+        }
+
+        function _reduceHitpoints() {
             figter.setHitpoints(figter.getHitpoints() - attack);
             if(figter.getHitpoints() < 0){
                 figter.setHitpoints(0);
@@ -123,7 +124,7 @@ Fighter.prototype.getName = function () {
 };
 
 Fighter.prototype.getAttributes = function () {
-    return `${this.getName()} -> ` +
+    return `${this.getName()} ->` +
         `\n\tAttack: ${this.getAttack()}, ` +
         `\n\tHitpoints: ${this.getHitpoints()}, ` +
         `\n\tTotal hitpoints: ${this.getTotalHitpoints()}`;
@@ -185,75 +186,3 @@ Monster.prototype.fury = function () {
         this.setAttack(this.getAttack() + 2);
     }
 };
-
-let hunter = new Champion({name: 'Rexxar', attack: 10, hitpoints: 60});
-let beast = new Monster({name: 'King Krush', attack: 8, hitpoints: 80});
-
-console.log(`1.hunter.fight(beast)\nhunter attack: ${hunter.getAttack()}\nbeast hitpoints: ${beast.getHitpoints()}`);
-hunter.fight(beast);
-console.log(`beast hitpoints after fight: ${beast.getHitpoints()}`); // -> 70
-console.log(`--------------------------`);
-
-console.log(`2.hunter.fight(beast) \nhunter attack: ${hunter.getAttack()}\nbeast hitpoints: ${beast.getHitpoints()}`);
-hunter.fight(beast);
-console.log(`beast hitpoints after fight: ${beast.getHitpoints()}`); // -> 60
-console.log(`--------------------------`);
-
-console.log(`3.beast.fight(hunter)\nbeast attack: ${beast.getAttack()}\nhunter hitpoints: ${hunter.getHitpoints()}`);
-beast.enrage(); //enrage === true
-beast.fight(hunter); //first attack: double damage
-console.log(`enrage = true, hunter hitpoints after fight: ${hunter.getHitpoints()}`); // -> 44
-console.log(`--------------------------`);
-
-console.log(`4.beast.fight(hunter)\nbeast attack: ${beast.getAttack()}\nhunter hitpoints: ${hunter.getHitpoints()}`);
-beast.fight(hunter); //second attack: double damage
-console.log(`enrage = true, hunter hitpoints after fight: ${hunter.getHitpoints()}`);  // -> 28
-console.log(`--------------------------`);
-
-console.log(`5.beast.fight(hunter)\nbeast attack: ${beast.getAttack()}\nhunter hitpoints: ${hunter.getHitpoints()}`);
-beast.fight(hunter); //enrage === false
-console.log(`hunter hitpoints after fight: ${hunter.getHitpoints()}`); // -> 20
-console.log(`--------------------------`);
-
-console.log(`6.beast.fight(hunter)\nbeast attack: ${beast.getAttack()}\nhunter hitpoints: ${hunter.getHitpoints()}`);
-hunter.defence(); //will block next attack
-beast.fight(hunter); //hunter blocked beast attack
-console.log(`hunter blocked beast attack, hunter hitpoints after fight: ${hunter.getHitpoints()}`); // -> 20
-console.log(`--------------------------`);
-
-console.log(`7.hunter.heal()`);
-hunter.heal();
-console.log(`hunter hitpoints: ${hunter.getHitpoints()}`); // -> 25
-console.log(`--------------------------`);
-
-console.log(`8.beast.fury() beast hitpoints: ${beast.getHitpoints()}, beast attack: ${beast.getAttack()}`);
-beast.fury();
-console.log(`after fury: beast hitpoints: ${beast.getHitpoints()}, beast attack: ${beast.getAttack()}`);
-console.log(`--------------------------`);
-
-let hunter2 = new Champion({name: 'Hunter', attack: 20, hitpoints: 60});
-let beast2 = new Monster({name: 'Monster', attack: 8, hitpoints: 10});
-
-console.log(`9.hunter2.fight(beast2): hunter attack: ${hunter2.getAttack()}, beast hitpoints: ${beast2.getHitpoints()}`);
-hunter2.fight(beast2);
-console.log(`hunter attack: ${hunter2.getAttack()}`);
-console.log(`beast is alive? ${beast2.isAlive()}`);
-console.log(`beast hitpoints: ${beast2.getHitpoints()}`);
-console.log(`--------------------------`);
-
-console.log(`10.fight with dead fighter:`);
-hunter2.fight(beast2);
-console.log(`--------------------------`);
-
-let hunter3 = new Champion({name: 'Hunter', attack: 8, hitpoints: 60});
-let beast3 = new Monster({name: 'Monster', attack: 80, hitpoints: 80});
-
-console.log(`11.beast3.fight(hunter3): beast attack: ${beast3.getAttack()}, hunter hitpoints: ${hunter3.getHitpoints()}`);
-beast3.fight(hunter3);
-console.log(`hunter is alive? ${hunter3.isAlive()}`);
-console.log(`hunter attack: ${hunter3.getAttack()}`);
-console.log(`hunter total hitpoints: ${hunter3.getTotalHitpoints()}`);
-console.log(`hunter hitpoints: ${hunter3.getHitpoints()}`);
-console.log(`beast attack: ${beast3.getAttack()}`);
-console.log(`beast hitpoints: ${beast3.getHitpoints()}`);
-console.log(`beast total hitpoints: ${beast3.getTotalHitpoints()}`);
