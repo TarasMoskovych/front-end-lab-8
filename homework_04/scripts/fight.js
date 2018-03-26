@@ -14,6 +14,8 @@ let champions = [
     captainAmerica = new Champion({name: 'Captain America', attack: 20, hitpoints: 85})
 ];
 
+fight(champions[chooseRandomCharacter(champions)], monsters[chooseRandomCharacter(monsters)]);
+
 function fight(fighter1, fighter2) {
     if(fighter1 === fighter2){
         console.log("Cannot fight with itself!");
@@ -111,5 +113,3 @@ function fight(fighter1, fighter2) {
 function chooseRandomCharacter(arr) {
     return Math.floor(Math.random() * arr.length);
 }
-
-fight(champions[chooseRandomCharacter(champions)], monsters[chooseRandomCharacter(monsters)]);
