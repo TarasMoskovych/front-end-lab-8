@@ -81,22 +81,22 @@ function fight(fighter1, fighter2) {
             console.log(`Round ${round}:`);
             if(power === 'heal' && isChampion){
                 champion.heal();
-                console.log(`${champion.getName()} apply heal!`);
+                console.log(`${champion.getName()} applied heal!`);
             }
             if(power === 'defence' && isChampion){
                 champion.defence();
-                console.log(`${champion.getName()} apply defence!`);
+                console.log(`${champion.getName()} applied defence!`);
             }
             if(power === 'enrage' && isMonster) {
                 monster.enrage();
-                console.log(`${monster.getName()} apply enrage!`);
+                console.log(`${monster.getName()} applied enrage!`);
             }
             if(power === 'fury' && isMonster){
                 monster.fury();
-                console.log(`${monster.getName()} apply fury!`);
+                console.log(`${monster.getName()} applied fury!`);
             }
             attacker.fight(defender);
-            console.log(`${attacker.getName()} fight ${defender.getName()}`);
+            console.log(`${attacker.getName()} attacked ${defender.getName()}.`);
             printAttributes();
             round++;
             fighting(defender, attacker);
