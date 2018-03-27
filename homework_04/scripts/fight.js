@@ -14,7 +14,7 @@ let champions = [
     captainAmerica = new Champion({name: 'Captain America', attack: 20, hitpoints: 85})
 ];
 
-fight(champions[chooseRandomCharacter(champions)], monsters[chooseRandomCharacter(monsters)]);
+fight(champions[chooseRandomFromArray(champions)], monsters[chooseRandomFromArray(monsters)]);
 
 function fight(fighter1, fighter2) {
     if (fighter1 === fighter2) {
@@ -87,7 +87,7 @@ function fight(fighter1, fighter2) {
     }
 
     function fighting(attacker, defender) {
-        power = powerArr[Math.floor(Math.random() * powerArr.length)];
+        power = powerArr[chooseRandomFromArray(powerArr)];
 
         console.log(`Round ${round}:`);
         if (power === 'heal' && isChampion) {
@@ -121,6 +121,6 @@ function fight(fighter1, fighter2) {
     }
 }
 
-function chooseRandomCharacter(arr) {
+function chooseRandomFromArray(arr) {
     return Math.floor(Math.random() * arr.length);
 }
