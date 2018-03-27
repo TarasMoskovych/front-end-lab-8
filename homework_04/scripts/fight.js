@@ -62,7 +62,7 @@ function fight(fighter1, fighter2) {
     }
 
     console.log(`> Start Fighting: \n${fighter1.constructor.name}: ${fighter1.getName()} ` +
-        `vs ${fighter2.constructor.name}: ${fighter2.getName()}`);
+                `vs ${fighter2.constructor.name}: ${fighter2.getName()}`);
     printAttributes();
 
     if (fighter1.getAttack() > fighter2.getAttack()) {

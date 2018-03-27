@@ -125,8 +125,8 @@ Fighter.prototype.getName = function () {
 
 Fighter.prototype.getAttributes = function () {
     return `${this.getName()} ->` +
-        `\n\tAttack: ${this.getAttack()}, ` +
-        `\n\tHitpoints: ${this.getHitpoints()}, ` +
+        `\n\tAttack: ${this.getAttack()},` +
+        `\n\tHitpoints: ${this.getHitpoints()},` +
         `\n\tTotal hitpoints: ${this.getTotalHitpoints()}`;
 };
 
