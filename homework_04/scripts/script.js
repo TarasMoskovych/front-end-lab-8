@@ -147,6 +147,7 @@ Champion.prototype.heal = function () {
 
 Champion.prototype.defence = function () {
     this.setIsBlocked(true);
+    this.setTotalHitpoints(this.getTotalHitpoints() + 1);
 };
 
 Champion.prototype.setIsBlocked = function (flag) {
