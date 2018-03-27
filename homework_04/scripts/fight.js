@@ -87,12 +87,8 @@ function fight(fighter1, fighter2) {
     }
 
     function fighting(attacker, defender) {
-        for (let i = 0; i < powerArr.length; i++) {
-            if(returnRandom()) {
-                power = powerArr[i];
-                break;
-            }
-        }
+        power = powerArr[Math.floor(Math.random() * powerArr.length)];
+
         console.log(`Round ${round}:`);
         if (power === 'heal' && isChampion) {
             champion.heal();
