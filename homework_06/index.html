@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="layout">
+            <h1 class="align-center">IP Tracker</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="layout">
+            <div class="form">
+                <h3 class="align-center">Input a valid IP address to track. If you type a wrong IP address
+                    or leave the input field empty, the program will track your current IP address!
+                </h3>
+                <form>
+                    <label for="inputIP"></label>
+                    <input autofocus placeholder="Input IP address" type="text" id="inputIP"><br>
+                    <input class="track" type="button" value="Track IP">
+                    <input class="validate" type="button" value="Validate Response">
+                </form>
+            </div>
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+            <div class="content"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="layout">
+            <p class="align-center">EPAM Lab 2018</p>
+        </div>
+    </footer>
+
+    <script src="js/task1.js"></script>
+    <script src="js/task2.js"></script>
+</body>
+</html>
