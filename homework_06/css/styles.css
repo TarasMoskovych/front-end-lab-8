@@ -31,7 +31,7 @@ body {
     border-bottom: 1px solid #2c2a29
 }
 
-.header::before,.table::before,.footer::before {
+.header::before, .footer::before {
     content: "";
     display: block;
     position: absolute;
@@ -64,12 +64,12 @@ body {
 }
 
 .table tr {
+    background: #594A3D;
     transition: .5s
 }
 
 .table td {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
-
     border: 1px solid #ddd;
     padding: 8px
 }
@@ -147,7 +147,7 @@ body {
 }
 
 .footer p {
-    padding: 10px;
+    padding: 15px;
     font-weight: 700
 }
 
