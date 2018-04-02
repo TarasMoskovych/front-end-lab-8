@@ -113,7 +113,7 @@ body {
 
 .form input:focus {
     padding: 2%;
-    border: 1px solid #8e7761
+    border: 1px solid #b99b7f
 }
 
 .form input[type=button] {

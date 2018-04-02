@@ -32,6 +32,10 @@ let trackingIp = () => {
 let validateResponse = () => {
     displaying('spinner', 'block');
     http.post(validateURl, globalData)
+        .then((response) =>{
+            alert(response);
+            displaying('spinner', 'none');
+        })
         .catch(e => {
             console.log(e);
         });

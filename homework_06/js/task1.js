@@ -3,16 +3,14 @@ let http = {
         return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
             xhr.open('GET', url);
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState !== 4) {
-                    return;
-                }
-                if (xhr.status === 200) {
+            xhr.onload = () => {
+                if(xhr.status >= 200 && xhr.status < 300) {
                     resolve(xhr.response);
                 } else {
                     reject(xhr.statusText);
                 }
             };
+            xhr.onerror = () => reject(xhr.statusText);
             xhr.send();
         });
     },
@@ -21,15 +19,14 @@ let http = {
         return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
             xhr.open("POST", url);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = () => {
-                if(xhr.readyState === 4 && xhr.status === 200) {
-                    try {
-                        displaying('spinner', 'none');
-                    } catch (e){};
-                    alert(xhr.responseText);
+            xhr.onload = () => {
+                if(xhr.status >= 200 && xhr.status < 300) {
+                    resolve(xhr.response);
+                } else {
+                    reject(xhr.statusText);
                 }
             };
+            xhr.onerror = () => reject(xhr.statusText);
             xhr.send(requestBody);
         });
     }
