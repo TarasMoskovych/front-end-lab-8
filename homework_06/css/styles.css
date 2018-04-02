@@ -119,7 +119,7 @@ body {
 }
 
 .form input[type=button] {
-    transition: .7s;
+    transition: .1s;
     padding: 2%;
     background: #b99b7f;
     border: 0;
@@ -130,6 +130,10 @@ body {
 .form input[type=button]:hover {
     cursor: pointer;
     background: #8e7761
+}
+
+.form input[type=button]:active {
+    background: #5F5041
 }
 
 .footer {
