@@ -7,7 +7,6 @@ let ip, globalData;
 
 let trackingIp = () => {
     displaying('spinner' , 'block');
-
     ip = document.getElementById('inputIP').value;
 
     if(ip.match(reIpPattern)){
@@ -33,8 +32,8 @@ let validateResponse = () => {
     displaying('spinner', 'block');
     http.post(validateURl, globalData)
         .then((response) =>{
-            alert(response);
             displaying('spinner', 'none');
+            alert(response);
         })
         .catch(e => {
             console.log(e);
