@@ -24,7 +24,7 @@ let trackingIp = () => {
             displaying('validate', 'block');
         })
         .catch(e => {
-            console.log(e);
+            alert(e);
         });
 };
 
@@ -36,7 +36,7 @@ let validateResponse = () => {
             alert(response);
         })
         .catch(e => {
-            console.log(e);
+            alert(e);
         });
 };
 
@@ -48,6 +48,9 @@ let appendData = (data) => {
     table.setAttribute('class', 'table');
 
     for(let key in data){
+        if(data[key] === null){
+            continue;
+        }
         let tr = createDomElement('tr');
         tr.appendChild(createDomElement('td', key));
         tr.appendChild(createDomElement('td', data[key]));
