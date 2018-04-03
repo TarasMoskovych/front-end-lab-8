@@ -12,6 +12,7 @@ let trackingIp = () => {
     if(ip.match(reIpPattern)){
         ipUrl = `https://ipapi.co/${ip}/json`;
     } else {
+        alert('The program will track your current IP address!');
         ipUrl = 'https://ipapi.co/json';
         document.getElementById('inputIP').value = '';
     }
