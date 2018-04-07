@@ -3,46 +3,128 @@
     padding: 0;
 }
 
-body{
-    margin-top: 30px;
+body {
+    background: url(../img/background.png) no-repeat fixed;
+    background-size: cover;
 }
-.board{
-    display: grid;
-    width: 450px;
+
+.align-center{
+    text-align: center;
+}
+
+.root h1{
+    font-size: 1.8em;
+    margin: 15px 0 25px;
+}
+
+.labels{
+    display: flex;
+    justify-content: space-between;
+}
+
+.labels h2{
+    box-shadow: 0 0 10px #000;
+    font-size: 1.2em;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.label-result{
+    text-align: center;
+    width: 100%;
     margin: 0 auto;
-    justify-content: center;
-    grid-template-columns: repeat(15, 30px);
-    grid-template-rows: repeat(15, 30px);
-    grid-column-gap: 0;
-    grid-row-gap: 0;
+    display: none;
+    background-color: #CFCFCF;
+}
+
+.label-black, .label-white, .label-result{
+    border-radius: 10px;
+}
+
+.label-black{
+    opacity: 0;
+    background-color: black;
+    color: white;
+}
+
+.label-white{
+    opacity: 0;
+    background-color: white;
+    color: black;
+}
+
+.layout{
     padding: 20px;
-    background-color: #CEA141;
-
-}
-.block{
-    border: 1px solid #5F512A;
-    background-color: #CEA141;
-    width: 30px;
-    height: 30px;
+    background-color: #DBAA40;
+    width: 375px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px #000;
 }
 
-.block.move::before {
+.board{
+    position: relative;
+}
+
+.board::after{
     content: "";
     display: block;
-    margin: 8px auto 0;
+    height: 100%;
+    width: 100%;
+    clear: left;
+}
+
+.board div{
+    float: left;
+    width: 24px;
+    margin-left: -1px;
+    margin-bottom: -1px;
+    border: 1px solid #000;
+    height: 24px;
+}
+
+.black, .white{
+    display: block;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    position: absolute;
+    left: 50px;
+    top: 0;
+    box-shadow: 2px 2px 8px #000;
 }
 
-.block.white::before {
-    background-color: #fff;
+.black{
+    background: radial-gradient(#777, #555, #222, #000);
 }
 
-.block.black::before {
-    background-color: #000;
+.white{
+    background: radial-gradient(#bbb, #ddd, #eee, #fff);
 }
 
-.board:hover{
+.block:hover {
     cursor: pointer;
+}
+
+.restart {
+    display: block;
+    margin: 20px auto 0;
+    transition: .1s;
+    padding: 10px;
+    border-radius: 10px;
+    background: #C79B3B;
+    border: 0;
+    color: #fff;
+}
+
+.restart:hover {
+    cursor: pointer;
+    background: #8e7761
+}
+
+.restart:active {
+    background: #5F5041
+}
+
+.restart:focus{
+    outline: none;
 }
