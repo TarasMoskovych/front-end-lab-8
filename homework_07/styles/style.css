@@ -107,8 +107,8 @@ body {
 
 .restart {
     display: block;
-    margin: 20px auto 0;
-    transition: .1s;
+    margin: 15px auto 0;
+    transition: .2s;
     padding: 10px;
     border-radius: 10px;
     background: #C79B3B;

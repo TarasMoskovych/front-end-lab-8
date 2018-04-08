@@ -34,7 +34,7 @@ $(function () {
                 }
                 board.append(stone);
                 checking(field, "black");
-                checking(field, "white");;
+                checking(field, "white");
             }
         });
     }
@@ -59,7 +59,7 @@ $(function () {
         board.off("click");
         $(".label-black").css({"display": "none"});
         $(".label-white").css({"display": "none"});
-        $(".label-result").text(`${color} wins!`).css({"display": "block"});
+        $(".label-result").text(`${color.toUpperCase()} WON!`).css({"display": "block"});
     }
 
     function restart() {
