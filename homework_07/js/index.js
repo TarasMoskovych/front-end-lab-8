@@ -15,10 +15,10 @@ $(function () {
 
     function setClick() {
         board.on("click", function(e) {
-            let axisX = Math.abs(Math.round((event.pageX - board.offset().left) / 25));
-            let axisY = Math.abs(Math.round((event.pageY - board.offset().top) / 25));
+            let axisX = Math.abs(Math.round((event.pageX - board.offset().left) / 27));
+            let axisY = Math.abs(Math.round((event.pageY - board.offset().top) / 27));
             let stone = $("<span>");
-            stone.css({"left": `${axisX * 25 - 10}px`, "top": `${axisY * 25 - 10}px`});
+            stone.css({"left": `${axisX * 27 - 11}px`, "top": `${axisY * 27 - 11}px`});
 
             if (field[axisX][axisY] === false) {
                 if (white) {
