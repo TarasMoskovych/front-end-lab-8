@@ -1,5 +1,4 @@
 const controllers = require('./controllers/handlers.js');
-
 const router = app => {
     app.post('/rockstar', controllers.create);
     app.get('/rockstars', controllers.findAll);

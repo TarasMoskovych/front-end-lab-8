@@ -14,11 +14,9 @@ exports.create = (req, res) => {
         return res.sendStatus(400);
     }
     const rockstar = findById(Number(req.body.id));
-
     if(rockstar){
         return res.status(409).send({"message": "Musician already exist."});
     }
-
     let arr = JSON.parse(readRockstars());
     arr.push(body);
     writeToJson(arr);
@@ -54,11 +52,9 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
     const rockstar = findById(Number(req.params.id));
-
     if(!rockstar){
         return res.sendStatus(404);
     }
-
     let arr = JSON.parse(readRockstars());
     let newArr = arr.filter(rockstar => rockstar.id !== Number(req.params.id));
     writeToJson(newArr);
