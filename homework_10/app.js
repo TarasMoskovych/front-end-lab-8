@@ -28,7 +28,6 @@ const addRequiredValidation = instance => {
     } else {
         console.log("Not value!");
     }
-    
     return requiredValidation;
 }
 
@@ -57,7 +56,6 @@ const addNumberValidation = instance => {
     } else {
         console.log("Not a number!");
     }
-
     return numberValidation;
 }
 
