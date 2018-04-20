@@ -20,13 +20,13 @@
     border: 1px solid #8797AA;
 }
 
-table td{
+.table td{
     width: 65px;
     padding: 4px;
     box-sizing: border-box;
 }
 
-table button{
+.table button{
     transition: .2s;
     display: block;
     width: 100%;
