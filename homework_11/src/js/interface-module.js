@@ -104,7 +104,7 @@ const parse = input => {
         } else if(a !== "" && b !== "") {
             calc(a, b, sign, reset);
         }
-    } else if(input.value==="+" || input.value==="-" || input.value==="*" || input.value==="/" ||
+    } else if(input.value === "+" || input.value === "-" || input.value === "*" || input.value === "/" ||
         input.value === "^" || input.value === "sqrt" || input.value === "1/x" || input.value === "+-") {
 
         if(a !== "" && b === "") {
@@ -124,17 +124,15 @@ const parse = input => {
             } else {
                 screen.innerHTML = a + symbol;
             }
-        } else if(a !== "" && b !== "") {
-            calc(a, b, sign, reset);
-            sign = input.value;
-            symbol = input.textContent;
-            screen.innerHTML = a + symbol;
+        } else if(a !== "" && b !== "" && input.value === "+-") {
+            b *= -1;
+            screen.innerHTML = `${a}${symbol}(${b})`;
         }
     } else {
         if(sign === "") {
             a = a + input.value;
             screen.innerHTML = a;
-        } else if(sign) {
+        } else {
             b = b + input.value;
             screen.innerHTML = a + symbol + b;
         }
