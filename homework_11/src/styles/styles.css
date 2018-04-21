@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body{
+    font-family: Arial, sans-serif;
+}
+
 .calculator{
     width: max-content;
     margin: 50px auto;
@@ -10,11 +14,6 @@
     padding: 10px 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px #000;
-}
-
-.window{
-    background-color: #F4F7FD;
-
 }
 
 .table td{
@@ -55,7 +54,7 @@ button:active{
     background-color: #000;
 }
 
-.screen{
+.wrapper{
     width: 300px;
     padding: 16px 10px;
     background-color: #F4F7FD;
@@ -65,11 +64,11 @@ button:active{
     border: 1px solid #8797AA;
 }
 
-.result{
+.screen{
     height: 42px;
     text-align: right;
-    font: normal normal 43px Arial;
+    font:  normal 43px Arial;
 }
-.result span{
+.screen span{
     opacity: 0.5;
 }

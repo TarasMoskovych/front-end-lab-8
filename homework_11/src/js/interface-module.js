@@ -1,19 +1,20 @@
 const root = document.querySelector(".root");
+let a = "", b = "", res = "", sign = "", symbol = "", aArr, bArr;
 
-const render = () => {
+(() => {
     root.innerHTML =
         "<div class='calculator'>" +
-            "<div class='screen'>" +
-                "<div class='result'>" +
+            "<div class='wrapper'>" +
+                "<div class='screen'>" +
                     "<span>0</span>" +
                 "</div>" +
             "</div>" +
             "<table class='table'>" +
                 "<tr>" +
-                    "<td colspan='2'><button value='' class='operation'>C</button></td>" +
-                    "<td><button class='operation'>&larr;</button></td>" +
-                    "<td><button class='operation'>&plusmn;</button></td>" +
-                    "<td><button value='sup' class='operation'>x&sup2;</button></td>" +
+                    "<td colspan='2'><button value='clear' class='operation'>C</button></td>" +
+                    "<td><button value='delete' class='operation'>&larr;</button></td>" +
+                    "<td><button value='+-' class='operation'>&plusmn;</button></td>" +
+                    "<td><button value='^' class='operation'>x&sup2;</button></td>" +
                 "</tr>" +
                 "<tr>" +
                     "<td><button value='7'>7</button></td>" +
@@ -43,8 +44,102 @@ const render = () => {
                 "</tr>" +
             "</table>" +
         "</div>"
+})();
+
+let screen = document.querySelector(".screen");
+
+document.querySelector(".table").addEventListener("click", event => {
+    if(event.target.matches("button")){
+        parse(event.target);
+    }
+});
+
+const parse = input => {
+    if(input.value === "clear"){
+        clear();
+    } else if(input.value === "delete"){
+        del();
+    } else if(input.value === "=") {
+        if(a !== "" && b === "" && sign === "^" || sign === "sqrt" || sign === "1/x"){
+            // calc();
+        } else if(a !== "" && b !== "") {
+            // calc();
+        }
+    } else if(input.value==="+" || input.value==="-" || input.value==="*" || input.value==="/" ||
+        input.value === "^" || input.value === "sqrt" || input.value === "1/x" || input.value === "+-") {
+
+        if(a !== "" && b === "") {
+            sign = input.value;
+            symbol = input.textContent;
+
+            if(input.value === "+-"){
+                a *= -1;
+                screen.innerHTML = a;
+            } else if(input.value === "^"){
+                symbol = input.textContent.substring(1);
+                screen.innerHTML = a + symbol;
+            } else if(input.value === "sqrt"){
+                screen.innerHTML = `${symbol}(${a})`;
+            } else if(input.value === "1/x"){
+                screen.innerHTML = `1/${a}`;
+            } else {
+                screen.innerHTML = a + symbol;
+            }
+        } else if(a !== "" && b !== "") {
+            // calc();
+            sign = input.value;
+            symbol = input.textContent;
+            screen.innerHTML = a + symbol;
+        }
+    } else {
+        if(sign === "") {
+            a = a + input.value;
+            screen.innerHTML = a;
+        } else if(sign) {
+            b = b + input.value;
+            screen.innerHTML = a + symbol + b;
+        }
+    }
+};
+
+const reset = () => {
+    a = "";
+    b = "";
+    res = "";
+    aArr = "";
+    bArr = "";
+    sign = "";
+    symbol = "";
+};
+
+const clear = () => {
+    reset();
+    screen.innerHTML = "<span>0</span>";
+};
+
+const del = () => {
+    if(a !== "" && sign !== "") {
+        if(b === "") {
+            sign = "";
+            screen.innerHTML = a;
+        } else {
+            bArr = [];
+            bArr = b.split("");
+            bArr.pop();
+            b = bArr.join("");
+            screen.innerHTML = a + symbol + b;
+        }
+    } else if(a !== "" && sign === "") {
+        aArr = [];
+        aArr = a.split("");
+        aArr.pop();
+        a = aArr.join("");
+        screen.innerHTML = a;
+    } if(a === ""){
+        clear();
+    }
 };
 
 export default function(){
-    render();
+    // render();
 }
