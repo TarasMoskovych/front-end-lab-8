@@ -12,12 +12,9 @@
     box-shadow: 0 0 20px #000;
 }
 
-.label{
+.window{
     background-color: #F4F7FD;
-    height: 80px;
-    border-radius: 8px;
-    margin: 10px 6px;
-    border: 1px solid #8797AA;
+
 }
 
 .table td{
@@ -40,7 +37,7 @@
     color: #1E395B;
 }
 
-button.operator{
+button.operation{
     background-color: #E4EBF4;
 }
 
@@ -56,4 +53,23 @@ button:hover{
 button:active{
     box-shadow: 0 0 1px #000;
     background-color: #000;
+}
+
+.screen{
+    width: 300px;
+    padding: 16px 10px;
+    background-color: #F4F7FD;
+    height: 50px;
+    border-radius: 8px;
+    margin: 10px 6px;
+    border: 1px solid #8797AA;
+}
+
+.result{
+    height: 42px;
+    text-align: right;
+    font: normal normal 43px Arial;
+}
+.result span{
+    opacity: 0.5;
 }
