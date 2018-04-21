@@ -1,53 +1,45 @@
 import screen from "./interface-module";
-let res;
+import {output} from "./output-module";
 
 export const calc = (a, b, sign, reset) => {
     switch(sign) {
         case '+':
-            res = String(Number(a) + Number(b));
-            screen.innerHTML = res.slice(0, 8);
+            output(String(Number(a) + Number(b)));
             reset();
             break;
 
         case '-':
-            res = String(Number(a) - Number(b));
-            screen.innerHTML = res.slice(0, 8);
+            output(String(Number(a) - Number(b)));
             reset();
             break;
 
         case '*':
-            res = String(Number(a) * Number(b));
-            screen.innerHTML = res.slice(0, 8);
+            output(String(Number(a) * Number(b)));
             reset();
             break;
 
         case '^':
-            res = String(Number(a) * Number(a));
-            screen.innerHTML = res.slice(0, 8);
+            output(String(Number(a) * Number(a)));
             reset();
             break;
 
         case 'sqrt':
-            res = String(Math.sqrt(Number(a)));
-            screen.innerHTML = res.slice(0, 8);
+            output(String(Math.sqrt(Number(a))));
             reset();
             break;
 
         case '1/x':
-            res = String(1 / Number(a));
-            screen.innerHTML = res.slice(0, 8);
+            output(String(1 / Number(a)));
             reset();
             break;
 
         case '/':
             if(b === '0') {
-                res = "Infinity";
-                screen.innerHTML = res;
+                output("Infinity");
                 reset();
                 break;
             } else {
-                res = String(Number(a) / Number(b));
-                screen.innerHTML = res.slice(0,8);
+                output(String(Number(a) / Number(b)));
                 reset();
                 break;
             }

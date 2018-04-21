@@ -1,5 +1,6 @@
+import screen from "./interface-module";
 import style from '../styles/styles.css';
-import calculatingModule from './calculating-module';
-import interfaceModule from './interface-module';
 
-// interfaceModule();
+export const output = (res) => {
+    screen.innerHTML = res.slice(0, 12);
+};
