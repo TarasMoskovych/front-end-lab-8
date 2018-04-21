@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 	entry: './src/js/output-module.js',
@@ -39,6 +41,8 @@ module.exports = {
 			template: './src/index.html'
 		}),
 		new ExtractTextPlugin("styles.css"),
+        new UglifyJSPlugin(),
+        new OptimizeCssAssetsPlugin(),
 	],
 	watch: true
 };

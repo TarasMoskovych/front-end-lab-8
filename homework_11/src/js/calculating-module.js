@@ -1,4 +1,3 @@
-import screen from "./interface-module";
 import {output} from "./output-module";
 
 export const calc = (a, b, sign, reset) => {
