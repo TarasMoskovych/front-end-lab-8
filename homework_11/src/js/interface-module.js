@@ -1,5 +1,7 @@
+import {calc} from "./calculating-module";
+
 const root = document.querySelector(".root");
-let a = "", b = "", res = "", sign = "", symbol = "", aArr, bArr;
+let a = "", b = "", sign = "", symbol = "", aArr, bArr;
 
 (() => {
     root.innerHTML =
@@ -54,58 +56,9 @@ document.querySelector(".table").addEventListener("click", event => {
     }
 });
 
-const parse = input => {
-    if(input.value === "clear"){
-        clear();
-    } else if(input.value === "delete"){
-        del();
-    } else if(input.value === "=") {
-        if(a !== "" && b === "" && sign === "^" || sign === "sqrt" || sign === "1/x"){
-            // calc();
-        } else if(a !== "" && b !== "") {
-            // calc();
-        }
-    } else if(input.value==="+" || input.value==="-" || input.value==="*" || input.value==="/" ||
-        input.value === "^" || input.value === "sqrt" || input.value === "1/x" || input.value === "+-") {
-
-        if(a !== "" && b === "") {
-            sign = input.value;
-            symbol = input.textContent;
-
-            if(input.value === "+-"){
-                a *= -1;
-                screen.innerHTML = a;
-            } else if(input.value === "^"){
-                symbol = input.textContent.substring(1);
-                screen.innerHTML = a + symbol;
-            } else if(input.value === "sqrt"){
-                screen.innerHTML = `${symbol}(${a})`;
-            } else if(input.value === "1/x"){
-                screen.innerHTML = `1/${a}`;
-            } else {
-                screen.innerHTML = a + symbol;
-            }
-        } else if(a !== "" && b !== "") {
-            // calc();
-            sign = input.value;
-            symbol = input.textContent;
-            screen.innerHTML = a + symbol;
-        }
-    } else {
-        if(sign === "") {
-            a = a + input.value;
-            screen.innerHTML = a;
-        } else if(sign) {
-            b = b + input.value;
-            screen.innerHTML = a + symbol + b;
-        }
-    }
-};
-
 const reset = () => {
     a = "";
     b = "";
-    res = "";
     aArr = "";
     bArr = "";
     sign = "";
@@ -140,6 +93,52 @@ const del = () => {
     }
 };
 
-export default function(){
-    // render();
-}
+const parse = input => {
+    if(input.value === "clear"){
+        clear();
+    } else if(input.value === "delete"){
+        del();
+    } else if(input.value === "=") {
+        if(a !== "" && b === "" && sign === "^" || sign === "sqrt" || sign === "1/x"){
+            calc(a, b, sign, reset);
+        } else if(a !== "" && b !== "") {
+            calc(a, b, sign, reset);
+        }
+    } else if(input.value==="+" || input.value==="-" || input.value==="*" || input.value==="/" ||
+        input.value === "^" || input.value === "sqrt" || input.value === "1/x" || input.value === "+-") {
+
+        if(a !== "" && b === "") {
+            sign = input.value;
+            symbol = input.textContent;
+
+            if(input.value === "+-"){
+                a *= -1;
+                screen.innerHTML = a;
+            } else if(input.value === "^"){
+                symbol = input.textContent.substring(1);
+                screen.innerHTML = a + symbol;
+            } else if(input.value === "sqrt"){
+                screen.innerHTML = `${symbol}(${a})`;
+            } else if(input.value === "1/x"){
+                screen.innerHTML = `1/${a}`;
+            } else {
+                screen.innerHTML = a + symbol;
+            }
+        } else if(a !== "" && b !== "") {
+            calc(a, b, sign, reset);
+            sign = input.value;
+            symbol = input.textContent;
+            screen.innerHTML = a + symbol;
+        }
+    } else {
+        if(sign === "") {
+            a = a + input.value;
+            screen.innerHTML = a;
+        } else if(sign) {
+            b = b + input.value;
+            screen.innerHTML = a + symbol + b;
+        }
+    }
+};
+
+export default screen;
