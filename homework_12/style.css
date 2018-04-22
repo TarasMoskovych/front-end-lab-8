@@ -1,0 +1,145 @@
+body {
+    padding: 20px;
+    font: normal 14px/1.2 Arial, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.wrapper {
+    overflow: hidden;
+}
+
+
+/**************/
+/* Names list */
+.names {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 300px;
+    float: left;
+    margin-right: 2px;
+}
+.names li {
+    background: #00BCD4;
+    margin: 0 0 1px 0;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+}
+
+/***************/
+/* Scores list */
+.scores {
+    width: 80px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    margin-right: 30px;
+}
+.scores li {
+    margin: 0 0 1px 0;
+    padding: 10px 0;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    background: #727272;
+    text-align: center;
+}
+.scores span {
+    pointer-events: none;
+}
+.score-input {
+    width: 35px;
+    height: 9px;
+    text-align: center;
+}
+
+/***********/
+/* Profile */
+.profile {
+    float: left;
+    width: 200px;
+    background: #448AFF;
+    padding: 0 10px;
+    text-align: center;
+}
+.profile img {
+    display: block;
+    margin: 10px auto 10px;
+}
+.profile h3 {
+    margin: 0 0 10px;
+}
+
+/***********/
+/* Sort */
+.sort-controls{
+    padding: 0;
+    margin: 0;
+    width: 378px;
+    border: 2px solid #E6E6E6;
+    border-bottom: none;
+    cursor: pointer;
+}
+.sort-controls::after{
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    clear: right;
+}
+.sort-by-name, .sort-by-score{
+    padding: 15px 10px;
+    position: relative;
+}
+.sort-by-name{
+    float: left;
+    border-right: 2px solid #E6E6E6;
+    width: 278px;
+}
+.sort-by-score{
+    float: right;
+    left: -10px;
+    width: 50px;
+    padding-left: 5px;
+    text-align: left;
+}
+.top, .middle, .bottom{
+    position: absolute;
+}
+.top, .bottom{
+    transform: rotate(45deg);
+    background-color: #646464;
+    width: 10px;
+    height: 10px;
+}
+.top{
+    top: 15px;
+}
+.bottom{
+    top: 20px;
+}
+.middle{
+    z-index: 8;
+    width: 15px;
+    height: 3px;
+    background-color: #fff;
+    top: 21px;
+}
+.sort-by-name .top, .sort-by-name .bottom{
+    right: 10px;
+}
+.sort-by-name .middle{
+    right: 7px;
+}
+.sort-by-score .top, .sort-by-score .bottom{
+    right: 0;
+}
+.sort-by-score .middle{
+    right: -3px;
+}
