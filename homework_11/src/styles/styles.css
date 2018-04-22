@@ -8,7 +8,7 @@ body{
 }
 
 .calculator{
-    width: max-content;
+    width: 335px;
     margin: 50px auto;
     background-color: #D9E4F1;
     padding: 10px 20px;
@@ -58,7 +58,7 @@ button:active{
     width: 300px;
     padding: 16px 10px;
     background-color: #F4F7FD;
-    height: 50px;
+    height: 45px;
     border-radius: 8px;
     margin: 10px 6px;
     border: 1px solid #8797AA;
@@ -66,9 +66,8 @@ button:active{
 }
 
 .screen{
-    height: 42px;
     text-align: right;
-    font:  normal 43px Arial;
+    font-size: 40px;
 }
 .screen span{
     opacity: 0.5;

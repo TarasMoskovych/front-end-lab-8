@@ -1,34 +1,38 @@
 import {output} from "./output-module";
 
+const slice = content => {
+    return content.slice(0,12);
+};
+
 export const calc = (a, b, sign, reset) => {
     switch(sign) {
         case '+':
-            output(String(Number(a) + Number(b)));
+            output(slice(String(Number(a) + Number(b))));
             reset();
             break;
 
         case '-':
-            output(String(Number(a) - Number(b)));
+            output(slice(String(Number(a) - Number(b))));
             reset();
             break;
 
         case '*':
-            output(String(Number(a) * Number(b)));
+            output(slice(String(Number(a) * Number(b))));
             reset();
             break;
 
         case '^':
-            output(String(Number(a) * Number(a)));
+            output(slice(String(Number(a) * Number(a))));
             reset();
             break;
 
         case 'sqrt':
-            output(String(Math.sqrt(Number(a))));
+            output(slice(String(Math.sqrt(Number(a)))));
             reset();
             break;
 
         case '1/x':
-            output(String(1 / Number(a)));
+            output(slice(String(1 / Number(a))));
             reset();
             break;
 
@@ -38,7 +42,7 @@ export const calc = (a, b, sign, reset) => {
                 reset();
                 break;
             } else {
-                output(String(Number(a) / Number(b)));
+                output(slice(String(Number(a) / Number(b))));
                 reset();
                 break;
             }

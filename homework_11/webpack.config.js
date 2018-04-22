@@ -6,7 +6,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-	entry: './src/js/output-module.js',
+	entry: './src/js/interface-module.js',
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist')

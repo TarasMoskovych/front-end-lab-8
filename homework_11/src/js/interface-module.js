@@ -1,4 +1,6 @@
+import '../styles/styles.css';
 import {calc} from "./calculating-module";
+import {output} from "./output-module";
 
 const root = document.querySelector(".root");
 let a = "", b = "", sign = "", symbol = "", aArr, bArr;
@@ -67,27 +69,27 @@ const reset = () => {
 
 const clear = () => {
     reset();
-    screen.innerHTML = "<span>0</span>";
+    output("<span>0</span>");
 };
 
 const del = () => {
     if(a !== "" && sign !== "") {
         if(b === "") {
             sign = "";
-            screen.innerHTML = a;
+            output(a);
         } else {
             bArr = [];
             bArr = b.split("");
             bArr.pop();
             b = bArr.join("");
-            screen.innerHTML = a + symbol + b;
+            output(a + symbol + b);
         }
     } else if(a !== "" && sign === "") {
         aArr = [];
         aArr = a.split("");
         aArr.pop();
         a = aArr.join("");
-        screen.innerHTML = a;
+        output(a);
     } if(a === ""){
         clear();
     }
@@ -113,28 +115,28 @@ const parse = input => {
 
             if(input.value === "+-"){
                 a *= -1;
-                screen.innerHTML = a;
+                output(a);
             } else if(input.value === "^"){
                 symbol = input.textContent.substring(1);
-                screen.innerHTML = a + symbol;
+                output(a + symbol);
             } else if(input.value === "sqrt"){
-                screen.innerHTML = `${symbol}(${a})`;
+                output(`${symbol}(${a})`);
             } else if(input.value === "1/x"){
-                screen.innerHTML = `1/${a}`;
+                output(`1/${a}`);
             } else {
-                screen.innerHTML = a + symbol;
+                output(a + symbol);
             }
         } else if(a !== "" && b !== "" && input.value === "+-") {
             b *= -1;
-            screen.innerHTML = `${a}${symbol}(${b})`;
+            output(`${a}${symbol}(${b})`);
         }
     } else {
         if(sign === "") {
             a = a + input.value;
-            screen.innerHTML = a;
+            output(a);
         } else {
             b = b + input.value;
-            screen.innerHTML = a + symbol + b;
+            output(a + symbol + b);
         }
     }
 };
