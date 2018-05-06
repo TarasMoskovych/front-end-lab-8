@@ -1,0 +1,16 @@
+.search-form, .not-found{
+  color: $grey;
+  font-size: 28px;
+}
+
+.search-form{
+  align-self: flex-start;
+  margin-top: 20px;
+  border: none;
+  outline: none;
+}
+
+.not-found{
+  margin-top: 80px;
+  text-align: center;
+}

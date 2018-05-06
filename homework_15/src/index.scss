@@ -2,5 +2,12 @@
 @import './styles/fonts';
 @import './styles/colors';
 
-/* Import your components styles here */
-
+// Custom
+@import 'styles/general';
+@import 'styles/search-form';
+@import 'styles/loader';
+@import 'styles/available-colors';
+@import 'styles/selected-colors';
+@import 'styles/display-colors';
+@import 'styles/empty-colors';
+@import 'styles/server-error';

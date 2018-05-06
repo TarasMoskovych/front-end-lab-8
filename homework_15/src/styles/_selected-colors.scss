@@ -1,0 +1,29 @@
+.selected-colors-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .selected-color-current{
+    width: 65px;
+    height: 65px;
+    margin-left: -10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .selected-color-current i{
+    transition: .2s;
+    position: relative;
+    top: -5px;
+    left: -15px;
+    background-color: $red;
+    color: $white;
+    border-radius: 100%;
+
+    &:hover{
+      border: 1px solid darken($red, 10%);
+      cursor: pointer;
+      background-color: darken($red, 10%);
+    }
+  }
+}

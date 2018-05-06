@@ -1,0 +1,19 @@
+.selected-colors-wrapper{
+  .first-empty, .second-empty, .third-empty{
+     background-color: $white;
+     width: 61px;
+     height: 61px;
+  }
+
+  .first-empty{
+     border: 2px solid #DBD7F4;
+  }
+
+  .second-empty{
+     border: 2px solid #A7B2DD;
+  }
+
+  .third-empty{
+     border: 2px solid #8585CC;
+  }
+}
