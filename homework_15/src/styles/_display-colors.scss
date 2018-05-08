@@ -1,0 +1,51 @@
+.colors-container{
+  margin-top: 60px;
+  animation: fadeInLoad 2s;
+
+  .colors-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .color-block{
+    width: 220px;
+    height: 200px;
+    margin: .5em;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .add-icon{
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    padding: 2% 5%;
+    background-color: $white;
+    border-radius: 10px;
+
+    .material-icons{
+      vertical-align: bottom;
+      font-size: 20px;
+    }
+
+    &:hover{
+      cursor: pointer;
+    }
+
+    &:active{
+      background-color: darken($white, 20%);
+      box-shadow: 1px 1px 5px #444;
+    }
+  }
+}
+
+@keyframes fadeInLoad {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
