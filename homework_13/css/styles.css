@@ -1,0 +1,68 @@
+.scrollup{
+    background: url("../assets/scroll.png") no-repeat scroll 0 0;
+    bottom: 20px;
+    position: fixed;
+    right: 15px;
+    text-indent: -9999px;
+    width: 65px;
+    height: 65px;
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
+
+.scrollup:hover{
+    cursor: pointer;
+}
+
+.scrollup:active{
+    bottom: 21px;
+}
+
+.visible{
+   opacity: 1;
+   transition: opacity 500ms ease-in;
+}
+
+.editable{
+    transition: .5s;
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid transparent;
+}
+
+.editable[contenteditable='true']{
+    padding: 5px;
+    border-color: #69c773;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15) inset;
+}
+
+.editable[contenteditable='true']:hover, .editable[contenteditable='true']:focus{
+    padding: 5px;
+    background: #F3F3F3;
+}
+
+.editable:focus, section > div:focus:hover  {
+    background: #FFF;
+    border-color: #69c773;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15) inset;
+}
+
+a span{
+    transition: .2s;
+}
+
+a span:active{
+    border: 1px solid #17A2B8;
+}
+
+a span:hover{
+    cursor: pointer;
+    color: #17A2B8;
+    background-color: #fff;
+    box-shadow: 0 0 3px #17A2B8 inset;
+}
+
+.form-group.required label:after {
+    content:"*";
+    color:red;
+}
