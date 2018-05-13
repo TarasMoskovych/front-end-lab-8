@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center my-3">EPAM FE Lab #8</h3>
+      <form (ngSubmit)="onSubmit()" #appComponent="ngForm">
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Topic</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">Lecturer</th>
+            <th class="text-center">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of timeline.data; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{(data.topic)}}</td>
+            <td class="text-center">{{data.date | date:"'M/d/yy"}}</td>
+            <td>{{data.lecturer}}</td>
+            <td>
+              <button (click)="remove(data)">Remove event</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="py-0">
+              <div class="form-group">
+                <label for="topic"></label>
+                <input type="text" [(ngModel)]="model.topic" [ngModelOptions]="{standalone: true}"
+                       class="form-control" id="topic" required placeholder="Topic">
+              </div>
+            </td>
+            <td class="py-0">
+              <div class="form-group">
+                <label for="date"></label>
+                <input type="date" [(ngModel)]="model.date" [ngModelOptions]="{standalone: true}"
+                       class="form-control" id="date" required placeholder="Topic">
+              </div>
+            </td>
+            <td class="py-0">
+              <div class="form-group">
+                <label for="lecturer"></label>
+                <input type="text" [(ngModel)]="model.lecturer" [ngModelOptions]="{standalone: true}"
+                       class="form-control" id="lecturer" required placeholder="Topic">
+              </div>
+            </td>
+
+            <!--<td></td>-->
+            <!--<td><input type="text" [(ngModel)]="model.topic" name="from" required placeholder="Topic"></td>-->
+            <!--<td><input type="date" [(ngModel)]="model.date" required name="to"></td>-->
+            <!--<td><input type="text" [(ngModel)]="model.lecturer" name="label" required placeholder="Lecturer"></td>-->
+            <td class="mt-lg-4 text-center">
+              <button type="submit" class="btn btn-primary">Add</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
