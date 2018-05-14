@@ -1,17 +1,22 @@
-export class Timeline {
+export class Data {
   constructor(public label: string,
               public data: Array<Lesson>) {
   }
 
-  remove(lesson: Lesson): Timeline {
+  remove(lesson: Lesson): Data {
     const data = this.data.slice(0);
     data.splice(this.data.indexOf(lesson), 1);
-    return new Timeline(this.label, data);
+    return new Data(this.label, data);
   }
-  add(lesson: Lesson): Timeline {
+  add(lesson: Lesson): Data {
     const data = this.data.slice(0);
     data.splice(this.data.length, 0, lesson);
-    return new Timeline(this.label, data);
+    return new Data(this.label, data);
+  }
+  edit(lesson: Lesson) {
+    const data = this.data.slice(0);
+    data.splice(this.data.length, 0, lesson);
+    return new Data(this.label, data);
   }
 }
 

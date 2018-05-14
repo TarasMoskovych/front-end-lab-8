@@ -14,13 +14,34 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let data of timeline.data; let i = index">
-            <td class="text-center">{{i+1}}</td>
-            <td>{{(data.topic)}}</td>
-            <td class="text-center">{{data.date | date:"'M/d/yy"}}</td>
-            <td>{{data.lecturer}}</td>
+          <tr *ngFor="let data of data.data; let idx=index">
+            <td class="text-center">{{idx+1}}</td>
+            <td *ngIf="displayRow != idx">{{(data.topic)}}</td>
+            <td *ngIf="displayRow != idx" class="text-center">{{data.date | date:"'M/d/yy"}}</td>
+            <td *ngIf="displayRow != idx">{{data.lecturer}}</td>
+
+            <td *ngIf="displayRow == idx" class="pt-0">
+              <label for="newTopic"></label>
+              <input id="newTopic" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data.topic"
+                     value="{{(data.topic)}}" class="form-control" autofocus>
+            </td>
+            <td *ngIf="displayRow == idx" class="pt-0">
+              <label for="newDate"></label>
+              <input id="newDate" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data.date"
+                     value="{{(data.date)}}" class="form-control">
+            </td>
+            <td *ngIf="displayRow == idx" class="pt-0">
+              <label for="newLecturer"></label>
+              <input id="newLecturer" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data.lecturer"
+                     value="{{(data.lecturer)}}" class="form-control">
+            </td>
             <td>
-              <button (click)="remove(data)">Remove event</button>
+              <div class="row d-flex justify-content-center mt-3">
+                <i *ngIf="displayRow != idx" (click)="temp(idx); assign(data)" class="material-icons pointer pr-1">edit</i>
+                <i *ngIf="displayRow == idx" (click) = edit(data.topic,data.date,data.lecturer) class="material-icons pointer pr-1">save</i>
+                <i *ngIf="displayRow != idx" (click)="remove(data)" class="material-icons pointer pl-1">delete</i>
+                <i *ngIf="displayRow == idx" (click)="clear()" class="material-icons pointer pl-1">close</i>
+              </div>
             </td>
           </tr>
           <tr>
@@ -46,12 +67,7 @@
                        class="form-control" id="lecturer" required placeholder="Topic">
               </div>
             </td>
-
-            <!--<td></td>-->
-            <!--<td><input type="text" [(ngModel)]="model.topic" name="from" required placeholder="Topic"></td>-->
-            <!--<td><input type="date" [(ngModel)]="model.date" required name="to"></td>-->
-            <!--<td><input type="text" [(ngModel)]="model.lecturer" name="label" required placeholder="Lecturer"></td>-->
-            <td class="mt-lg-4 text-center">
+            <td class="pt-3 text-center">
               <button type="submit" class="btn btn-primary">Add</button>
             </td>
           </tr>

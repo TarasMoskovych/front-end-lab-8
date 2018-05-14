@@ -27,3 +27,7 @@ circle.blue-dot {
 .table tr:hover{
   background-color: #DEE2E6;
 }
+
+.pointer{
+  cursor: pointer;
+}

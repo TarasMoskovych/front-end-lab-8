@@ -1,38 +1,61 @@
 import {Component} from '@angular/core';
-import {Lesson, Timeline} from './app.model';
-import {TimelineService} from './app.service';
+import {Lesson, Data} from './app.model';
+import {DataService} from './app.service';
+import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root, inline-edit',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TimelineService]
+  providers: [DataService]
 })
+
 export class AppComponent {
-
-  timeline: Timeline = new Timeline('Empty', []);
-
+  data: Data = new Data('Empty', []);
   model: LessonInput = new LessonInput();
+  displayRow: 0;
+  topic: string;
+  date: Date;
+  lecturer: string;
 
-  constructor(private timelineService: TimelineService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.timelineService.load().then(remoteTimelime => {
-      this.timeline = remoteTimelime;
+    this.dataService.load().then(remoteData => {
+      this.data = remoteData;
     });
   }
-
+  temp(idx) {
+    this.displayRow = idx;
+  }
+  assign(item) {
+    this.topic = item.topic;
+    this.date = item.date;
+    this.lecturer = item.lecturer;
+  }
   onSubmit() {
     this.add(this.model.toEvent());
     this.model = new LessonInput();
   }
-  remove(item: any) {
-    this.timeline = this.timeline.remove(item);
-  }
   add(item: any) {
-    this.timeline = this.timeline.add(item);
+    if (item.topic && item.date && item.lecturer) {
+      this.data = this.data.add(item);
+    }
   }
-
+  edit(item: any) {
+    this.displayRow = null;
+    if (item.topic && item.date && item.lecturer) {
+      this.data = this.data.edit(item);
+    }
+  }
+  clear() {
+    $('#newTopic').val(this.topic);
+    $('#newDate').val(this.date);
+    $('#newLecturer').val(this.lecturer);
+  }
+  remove(item: any) {
+    this.data = this.data.remove(item);
+  }
 }
 
 class LessonInput {
