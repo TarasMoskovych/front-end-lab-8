@@ -14,33 +14,35 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let data of data.data; let idx=index">
+          <tr *ngFor="let item of data.data; let idx=index">
             <td class="text-center">{{idx+1}}</td>
-            <td *ngIf="displayRow != idx">{{(data.topic)}}</td>
-            <td *ngIf="displayRow != idx" class="text-center">{{data.date | date:"'M/d/yy"}}</td>
-            <td *ngIf="displayRow != idx">{{data.lecturer}}</td>
+            <td *ngIf="displayRow != idx">{{(item.topic)}}</td>
+            <td *ngIf="displayRow != idx" class="text-center">{{item.date | date:"'M/d/yy"}}</td>
+            <td *ngIf="displayRow != idx">{{item.lecturer}}</td>
 
             <td *ngIf="displayRow == idx" class="pt-0">
               <label for="newTopic"></label>
-              <input id="newTopic" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data.topic"
-                     value="{{(data.topic)}}" class="form-control" autofocus>
+              <input id="newTopic" [ngModelOptions]="{standalone: true}" [(ngModel)] = "item.topic"
+                     value="{{(item.topic)}}" class="form-control" autofocus type="text">
             </td>
             <td *ngIf="displayRow == idx" class="pt-0">
               <label for="newDate"></label>
-              <input id="newDate" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data.date"
-                     value="{{(data.date)}}" class="form-control">
+              <input id="newDate" [ngModelOptions]="{standalone: true}" [(ngModel)] = "item.date"
+                     value="{{(item.date)}}" class="form-control" type="date">
             </td>
             <td *ngIf="displayRow == idx" class="pt-0">
               <label for="newLecturer"></label>
-              <input id="newLecturer" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data.lecturer"
-                     value="{{(data.lecturer)}}" class="form-control">
+              <input id="newLecturer" [ngModelOptions]="{standalone: true}" [(ngModel)] = "item.lecturer"
+                     value="{{(item.lecturer)}}" class="form-control" type="text">
             </td>
             <td>
-              <div class="row d-flex justify-content-center mt-3">
-                <i *ngIf="displayRow != idx" (click)="temp(idx); assign(data)" class="material-icons pointer pr-1">edit</i>
-                <i *ngIf="displayRow == idx" (click) = edit(data.topic,data.date,data.lecturer) class="material-icons pointer pr-1">save</i>
-                <i *ngIf="displayRow != idx" (click)="remove(data)" class="material-icons pointer pl-1">delete</i>
-                <i *ngIf="displayRow == idx" (click)="clear()" class="material-icons pointer pl-1">close</i>
+              <div class="row d-flex justify-content-center mt-2">
+                <i *ngIf="displayRow != idx" (click)="temp(idx); assign(item)"
+                   class="material-icons pointer pr-1">edit</i>
+                <i *ngIf="displayRow == idx" (click) = "edit(item.topic,item.date,item.lecturer)"
+                   class="material-icons pointer pr-1">save</i>
+                <i *ngIf="displayRow != idx" (click)="remove(item)" class="material-icons pointer pl-1">delete</i>
+                <i *ngIf="displayRow == idx" (click)= "clear(item)" class="material-icons pointer pl-1">close</i>
               </div>
             </td>
           </tr>

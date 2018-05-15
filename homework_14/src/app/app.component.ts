@@ -1,16 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Lesson, Data} from './app.model';
 import {DataService} from './app.service';
-import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-root, inline-edit',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [DataService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   data: Data = new Data('Empty', []);
   model: LessonInput = new LessonInput();
   displayRow: 0;
@@ -37,21 +36,21 @@ export class AppComponent {
     this.add(this.model.toEvent());
     this.model = new LessonInput();
   }
-  add(item: any) {
+  add(item: Lesson) {
     if (item.topic && item.date && item.lecturer) {
       this.data = this.data.add(item);
     }
   }
-  edit(item: any) {
+  edit(item: Lesson) {
     this.displayRow = null;
     if (item.topic && item.date && item.lecturer) {
       this.data = this.data.edit(item);
     }
   }
-  clear() {
-    $('#newTopic').val(this.topic);
-    $('#newDate').val(this.date);
-    $('#newLecturer').val(this.lecturer);
+  clear(item: Lesson) {
+    item.topic = this.topic;
+    item.date = this.date;
+    item.lecturer = this.lecturer;
   }
   remove(item: any) {
     this.data = this.data.remove(item);
